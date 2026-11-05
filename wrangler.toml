@@ -1,7 +1,9 @@
-# Deploy the static Astro output from `npm run build`.
-# Do not use @astrojs/cloudflare here — CI already builds `dist/` before `wrangler deploy`.
+# Static Astro site on Workers Assets. `wrangler deploy` runs [build] first (Cloudflare Workers Builds).
 name = "arcraider-hacks-net"
 compatibility_date = "2026-10-26"
+
+[build]
+command = "npm ci && npm run build"
 
 [assets]
 directory = "./dist"

@@ -23,4 +23,13 @@ npm run preview
 
 ## Deploy
 
-Output is in `dist/`. Cloudflare Workers static assets: `wrangler deploy` (see `wrangler.toml`).
+Output is in `dist/`.
+
+## Cloudflare Workers (Git deploy)
+
+In the Workers Builds dashboard:
+
+- **Root directory:** `/` (repository root — `package.json` and `wrangler.toml` here)
+- **Deploy command:** `npm run deploy` (runs `npm ci`, builds via `wrangler.toml` `[build]`, then uploads `dist/`)
+
+Do not use deploy-only `npx wrangler deploy` without a build step — `dist/` is not committed.
