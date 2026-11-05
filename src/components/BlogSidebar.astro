@@ -3,6 +3,7 @@ import '../styles/blog-sidebar.css';
 import Icon from './icons/Icon.astro';
 import { blogPostPath, productPath, ROUTES } from '../utils/path';
 import { checkoutPath } from '../config/checkout';
+import { getBlogCheckoutLabel } from '../config/blogCheckoutLabels';
 import { externalLinkProps } from '../utils/externalLink';
 import { t } from '../i18n';
 import type { BlogPostFull } from '../data/blog';
@@ -35,13 +36,62 @@ const toc = post.body
     id: slugify('text' in block ? block.text : ''),
   }));
 
-const productLinks: { label: string; href: string; icon: IconName }[] = [
+const productLinksBySlug: Record<string, { label: string; href: string; icon: IconName }[]> = {
+  aimbot: [
+    { label: 'All Arc Raiders products', href: ROUTES.products, icon: 'sidebarHub' },
+    { label: 'Pro combat tier page', href: productPath('pro'), icon: 'sidebarElite' },
+    { label: 'Unlock All cosmetics', href: productPath('unlock-all'), icon: 'sidebarSkin' },
+    { label: 'HWID reset utility', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
+    { label: 'UGC appeal workspace', href: productPath('ugc'), icon: 'sidebarUgc' },
+  ],
+  'buy-guide': [
+    { label: 'Products hub overview', href: ROUTES.products, icon: 'sidebarHub' },
+    { label: 'Elite full-suite listing', href: ROUTES.productsElite, icon: 'sidebarElite' },
+    { label: 'Skin Changer utility', href: productPath('unlock-all'), icon: 'sidebarSkin' },
+    { label: 'Post-ban HWID spoofer', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
+    { label: 'UGC recovery tool', href: productPath('ugc'), icon: 'sidebarUgc' },
+  ],
+  features: [
+    { label: 'Shop every hack tier', href: ROUTES.products, icon: 'sidebarHub' },
+    { label: 'Elite module bundle', href: ROUTES.productsElite, icon: 'sidebarElite' },
+    { label: 'Local Unlock All skins', href: productPath('unlock-all'), icon: 'sidebarSkin' },
+    { label: 'Hardware ID spoofer', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
+    { label: 'Ban appeal UGC desk', href: productPath('ugc'), icon: 'sidebarUgc' },
+  ],
+  bones: [
+    { label: 'Arc Raiders tier catalog', href: ROUTES.products, icon: 'sidebarHub' },
+    { label: 'Elite aim and loot suite', href: ROUTES.productsElite, icon: 'sidebarElite' },
+    { label: 'Cosmetic Unlock All', href: productPath('unlock-all'), icon: 'sidebarSkin' },
+    { label: 'HWID Spoofer product', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
+    { label: 'UGC case tracking', href: productPath('ugc'), icon: 'sidebarUgc' },
+  ],
+  'cheat-codes': [
+    { label: 'Live-server product hub', href: ROUTES.products, icon: 'sidebarHub' },
+    { label: 'Elite hacks listing', href: ROUTES.productsElite, icon: 'sidebarElite' },
+    { label: 'Unlock All page', href: productPath('unlock-all'), icon: 'sidebarSkin' },
+    { label: 'HWID Spoofer checkout', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
+    { label: 'UGC recovery checkout', href: productPath('ugc'), icon: 'sidebarUgc' },
+  ],
+  'console-tips': [
+    { label: 'Compare hack tiers online', href: ROUTES.products, icon: 'sidebarHub' },
+    { label: 'Elite tier details', href: ROUTES.productsElite, icon: 'sidebarElite' },
+    { label: 'Skin Changer unlock', href: productPath('unlock-all'), icon: 'sidebarSkin' },
+    { label: 'Spoofer after hardware ban', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
+    { label: 'UGC ban workflows', href: productPath('ugc'), icon: 'sidebarUgc' },
+  ],
+};
+
+const defaultProductLinks: { label: string; href: string; icon: IconName }[] = [
   { label: 'Arc Raiders products', href: ROUTES.products, icon: 'sidebarHub' },
   { label: 'Elite hacks', href: ROUTES.productsElite, icon: 'sidebarElite' },
   { label: 'Skin Changer', href: productPath('unlock-all'), icon: 'sidebarSkin' },
   { label: 'HWID Spoofer', href: productPath('hwid-spoofer'), icon: 'sidebarHwid' },
   { label: 'UGC', href: productPath('ugc'), icon: 'sidebarUgc' },
 ];
+
+const sidebarCheckoutLabel = getBlogCheckoutLabel(post.slug);
+
+const productLinks = productLinksBySlug[post.slug] ?? defaultProductLinks;
 ---
 
 <aside
@@ -128,7 +178,7 @@ const productLinks: { label: string; href: string; icon: IconName }[] = [
       aria-label={t.ui.checkoutAria}
       {...externalLinkProps(checkoutPath('arcRaider'))}
     >
-      <span class="truncate">Get access</span>
+      <span class="truncate">{sidebarCheckoutLabel}</span>
       <Icon name="arrowRight" size={16} class="shrink-0" />
     </Button>
   </section>

@@ -52,21 +52,22 @@ const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
   <section class="py-8 md:py-12">
     <div class="mx-auto max-w-6xl px-5">
       <Breadcrumbs items={breadcrumbs} />
+      <header class="section-header mt-6 max-w-2xl">
+        <p class="section-header__eyebrow">{t.blog.eyebrow}</p>
+        <h1 id="blog-latest-title" class="section-header__title">{t.blog.latestTitle}</h1>
+        <p class="section-header__subtitle">{t.blog.latestSubtitle}</p>
+      </header>
       <p class="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-        These buy guides cover tier picks, checkout steps, and module explainers—read them before you compare products or
+        These buy guides cover tier picks, payment steps, and module explainers—read them before you compare products or
         open secure checkout.
       </p>
       {featured && <BlogCard post={featured} index={0} eager showDate layout="featured" class="mt-8" />}
     </div>
   </section>
 
-  <section class="border-y border-border bg-muted/20 py-12 md:py-16" aria-labelledby="blog-latest-title">
+  <section class="border-y border-border bg-muted/20 py-12 md:py-16" aria-labelledby="blog-grid-title">
     <div class="mx-auto max-w-6xl px-5">
-      <header class="section-header max-w-2xl">
-        <p class="section-header__eyebrow">{t.blog.eyebrow}</p>
-        <h1 id="blog-latest-title" class="section-header__title">{t.blog.latestTitle}</h1>
-        <p class="section-header__subtitle">{t.blog.latestSubtitle}</p>
-      </header>
+      <h2 id="blog-grid-title" class="section-header__title max-w-2xl normal-case">{t.blog.title}</h2>
 
       <div class="mt-8 flex flex-col gap-4 lg:mt-10 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
         <div

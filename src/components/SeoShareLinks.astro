@@ -1,0 +1,48 @@
+---
+import { canonicalUrl } from '../config/seo';
+
+interface Props {
+  pageTitle: string;
+  pathname: string;
+}
+
+const { pageTitle, pathname } = Astro.props;
+const pageUrl = canonicalUrl(pathname);
+const encodedUrl = encodeURIComponent(pageUrl);
+const encodedTitle = encodeURIComponent(pageTitle);
+
+const shares = [
+  {
+    href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+    label: 'Share on X',
+  },
+  {
+    href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+    label: 'Share on Facebook',
+  },
+  {
+    href: `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`,
+    label: 'Share on Telegram',
+  },
+  {
+    href: `https://reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`,
+    label: 'Share on Reddit',
+  },
+  {
+    href: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`,
+    label: 'Share on WhatsApp',
+  },
+];
+---
+
+<nav class="seo-share mx-auto max-w-6xl border-t border-border/40 px-5 py-4" aria-label="Share this page">
+  <ul class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
+    {shares.map((item) => (
+      <li>
+        <a href={item.href} class="hover:text-primary hover:underline" rel="noopener noreferrer" target="_blank">
+          {item.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

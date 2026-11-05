@@ -6,6 +6,7 @@
 export interface PageSeoEntry {
   title: string;
   description: string;
+  h1?: string;
 }
 
 export const PAGE_SEO: Record<string, PageSeoEntry> = {
@@ -83,6 +84,23 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     title: 'Privacy Policy | Data, Cookies & Your Rights',
     description:
       'Privacy policy for arcraiderhacks.com—cookies, analytics, Discord ticket data, checkout partners, retention and your rights when browsing or purchasing.',
+  },
+  '/blog/aimbot/': {
+    title: 'Aimbot – Bone Select and No Recoil | Arc Raiders Hacks',
+    description:
+      'Aimbot and no recoil for Arc Raiders Pro tier—Bone Select, Soft Aim, Trigger Bot and recoil control before secure checkout.',
+    h1: 'Arc Raiders Aimbot – Bone Select and No Recoil: Pro tier combat tools | Hacks',
+  },
+  '/blog/buy-guide/': {
+    title: 'Arc Raiders checkout buy guide: Lite, Pro & Elite | Hacks',
+    description:
+      'Buy guide: step-by-step Arc Raiders checkout—choose Lite, Pro or Elite, pay securely and unlock the operator portal for loader download.',
+  },
+  '/blog/features/': {
+    title: 'Features – Arc Raiders Hacks by tier | Meet arcraiderhacks',
+    description:
+      'Features by tier for Arc Raiders hacks—ESP, aimbot, no recoil, loot assist and Skin Changer on Lite, Pro and Elite before you buy.',
+    h1: 'Meet arcraiderhacks — Arc Raiders Hacks cheat features by tier: ESP, aimbot, no recoil & skins',
   },
 };
 

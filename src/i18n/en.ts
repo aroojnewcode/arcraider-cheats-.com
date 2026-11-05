@@ -548,7 +548,7 @@ export const en: Translations = {
   },
   faq: {
     eyebrow: 'FAQ',
-    title: 'Buying FAQ — Tiers, Checkout & EAC Risk',
+    title: 'Meet arcraiderhacks — Buying FAQ — Tiers, Checkout & EAC Risk',
     subtitle: 'Clear answers on Arc Raiders hack tiers, EAC risk, Windows support and how checkout delivery works.',
     items: [
       {

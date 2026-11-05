@@ -28,6 +28,7 @@ const { post, index = 0, eager = false, showDate = false, layout = 'default', cl
   Astro.props;
 const isFeatured = layout === 'featured';
 const href = blogPostPath(post.slug);
+const readCtaLabel = `Read ${post.slug.replace(/-/g, ' ')} guide`;
 const timestamp = getBlogPostTimestamp(post.date);
 const readMinutes = getBlogReadMinutes(post.readTime);
 const tagIcon: IconName = blogTagIcons[post.tag] ?? 'tag';
@@ -162,7 +163,7 @@ const tagIcon: IconName = blogTagIcons[post.tag] ?? 'tag';
         <span>{post.readTime}</span>
       </p>
       <Button as="a" href={href} variant="outline" size="sm" class="blog-card__read shrink-0">
-        {t.blog.read}
+        {readCtaLabel}
         <Icon name="arrowRight" size={16} />
       </Button>
     </CardFooter>

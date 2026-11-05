@@ -1,9 +1,9 @@
 /**
  * Generate favicon + logo assets from public/brand/arc-favicon-source.png
- * Run: node scripts/make-favicon.mjs
+ * Run: npm run brand:icons
  */
 import sharp from 'sharp';
-import { writeFileSync, readFileSync, mkdirSync, existsSync } from 'node:fs';
+import { writeFileSync, readFileSync, mkdirSync, existsSync, unlinkSync } from 'node:fs';
 import path from 'node:path';
 
 const root = process.cwd();
@@ -18,15 +18,13 @@ if (!existsSync(src)) {
 const publicDir = path.join(root, 'public');
 mkdirSync(path.join(publicDir, 'brand'), { recursive: true });
 
+/** Single Arc Raiders icon set — no duplicate android-chrome / legacy game files. */
 const sizes = [
   ['favicon-16.png', 16],
   ['favicon-32.png', 32],
   ['apple-touch-icon.png', 180],
-  ['android-chrome-192.png', 192],
-  ['android-chrome-512.png', 512],
   ['favicon-192.png', 192],
   ['favicon-512.png', 512],
-  ['logo.png', 128],
 ];
 
 for (const [name, size] of sizes) {
@@ -90,11 +88,21 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role=
 writeFileSync(path.join(publicDir, 'favicon.svg'), svg);
 writeFileSync(path.join(publicDir, 'logo.svg'), svg);
 
-await sharp(src)
-  .resize(512, 512, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 1 } })
-  .jpeg({ quality: 90 })
-  .toFile(path.join(publicDir, 'arc-raiders-icon.jpg'));
-
 writeFileSync(path.join(publicDir, 'favicon.png'), readFileSync(path.join(publicDir, 'favicon-32.png')));
+
+const legacyPublicIcons = [
+  'android-chrome-192.png',
+  'android-chrome-512.png',
+  'favicon.ico.png',
+  'logo.png',
+];
+
+for (const name of legacyPublicIcons) {
+  const file = path.join(publicDir, name);
+  if (existsSync(file)) {
+    unlinkSync(file);
+    console.log('Removed legacy icon', name);
+  }
+}
 
 console.log('Brand icons generated from', path.relative(root, src));

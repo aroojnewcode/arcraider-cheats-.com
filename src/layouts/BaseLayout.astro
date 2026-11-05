@@ -15,6 +15,8 @@ import {
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import JsonLd from '../components/JsonLd.astro';
+import SeoContextLinks from '../components/SeoContextLinks.astro';
+import SeoShareLinks from '../components/SeoShareLinks.astro';
 import responsiveDocumentCss from '../styles/responsive-document.css?raw';
 
 interface Props {
@@ -147,6 +149,8 @@ const robotsContent = noindex
     <main id="main-content">
       <slot />
     </main>
+    <SeoContextLinks pathname={Astro.url.pathname} />
+    <SeoShareLinks pageTitle={title} pathname={Astro.url.pathname} />
     <Footer />
     <script>
       import '../scripts/site.ts';

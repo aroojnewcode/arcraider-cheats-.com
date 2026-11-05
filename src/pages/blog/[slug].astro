@@ -3,7 +3,8 @@ import '../../styles/blog-pages.css';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { t } from '../../i18n';
 import { getAllBlogSlugs, getBlogPost, getRelatedBlogPosts } from '../../data/blog';
-import { pageTitle } from '../../config/seo';
+import { normalizeDocumentTitle, pageTitle, resolvePageSeo } from '../../config/seo';
+import { getPageSeoEntry } from '../../config/pageSeo';
 import {
   articleSchema,
   breadcrumbSchema,
@@ -23,6 +24,7 @@ import { Button } from '@/components/starwind/button';
 import { Prose } from '@/components/starwind/prose';
 import BlogPostCta from '../../components/BlogPostCta.astro';
 import { normalizeInternalPath, ROUTES } from '../../utils/path';
+import { getBlogCheckoutLabel } from '../../config/blogCheckoutLabels';
 
 export function getStaticPaths() {
   return getAllBlogSlugs().map((slug) => ({ params: { slug } }));
@@ -36,6 +38,12 @@ if (!post) {
 }
 
 const postPath = `/blog/${post.slug}/`;
+const seoEntry = getPageSeoEntry(postPath);
+const layoutTitle = seoEntry?.title
+  ? normalizeDocumentTitle(seoEntry.title)
+  : pageTitle(post.title);
+const layoutDescription = seoEntry?.description ?? post.desc;
+const articleH1 = seoEntry?.h1 ?? post.title;
 const breadcrumbs = [
   { name: 'Home', path: '/' },
   { name: 'Blog', path: '/blog/' },
@@ -43,6 +51,7 @@ const breadcrumbs = [
 ];
 
 const related = getRelatedBlogPosts(post.slug, 3);
+const checkoutNavLabel = getBlogCheckoutLabel(post.slug);
 
 function linkify(text: string): string {
   return text
@@ -68,8 +77,8 @@ const published = parseBlogDate(post.date);
 ---
 
 <BaseLayout
-  title={pageTitle(post.title)}
-  description={post.desc}
+  title={layoutTitle}
+  description={layoutDescription}
   ogType="article"
   ogImage={post.image ?? undefined}
   ogImageAlt={post.title}
@@ -93,9 +102,7 @@ const published = parseBlogDate(post.date);
       <BlogPostTopBar post={post} class="mt-6" />
 
       <div class="blog-article__layout mt-4 grid gap-6 lg:grid-cols-[minmax(14rem,16.5rem)_minmax(0,1fr)] lg:items-start lg:gap-8 xl:grid-cols-[17.5rem_minmax(0,1fr)]">
-        <BlogSidebar post={post} related={related} class="order-2 lg:order-1" />
-
-        <div class="order-1 min-w-0 lg:order-2">
+        <div class="min-w-0 lg:col-start-2 lg:row-start-1">
           {
             post.image ? (
               <figure class="blog-article__hero">
@@ -117,7 +124,7 @@ const published = parseBlogDate(post.date);
           }
 
           <header class="blog-article__header">
-            <h1 class="blog-article__title">{post.title}</h1>
+            <h1 class="blog-article__title">{articleH1}</h1>
             <p class="blog-article__lead">{post.desc}</p>
             {
               post.author && (
@@ -187,18 +194,20 @@ const published = parseBlogDate(post.date);
 
           <nav class="blog-article__actions" aria-label="Continue reading">
             <Button as="a" href={checkoutPath('arcRaider')} variant="primary" aria-label={t.ui.checkoutAria}>
-              Get access
+              {checkoutNavLabel}
               <Icon name="arrowRight" size={17} />
             </Button>
             <Button as="a" href={ROUTES.products} variant="outline">
-              View products
+              Browse Arc Raiders hack tiers
             </Button>
             <Button as="a" href={ROUTES.blog} variant="outline">
-              More articles
+              More checkout walkthrough articles
               <Icon name="arrowRight" size={17} />
             </Button>
           </nav>
         </div>
+
+        <BlogSidebar post={post} related={related} class="lg:col-start-1 lg:row-start-1" />
       </div>
     </div>
   </article>

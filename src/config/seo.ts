@@ -41,8 +41,32 @@ export function absoluteAssetUrl(path: string): string {
 
 export function resolvePageSeo(pathname: string): { title: string; description: string } {
   const entry = getPageSeoEntry(pathname);
-  if (entry) return entry;
-  return { title: t.site.title, description: t.site.description };
+  if (entry) {
+    return {
+      title: normalizeDocumentTitle(entry.title),
+      description: entry.description,
+    };
+  }
+  return {
+    title: normalizeDocumentTitle(t.site.title),
+    description: t.site.description,
+  };
+}
+
+/** Avoid duplicate brand tokens and dangling " | " in <title>. */
+export function normalizeDocumentTitle(title: string): string {
+  const brand = t.site.name;
+  let normalized = title.trim();
+  normalized = normalized.replace(/\s+\|\s*$/, '').trim();
+  const brandSuffix = ` | ${brand}`;
+  if (normalized.endsWith(brandSuffix)) {
+    const withoutSuffix = normalized.slice(0, -brandSuffix.length).trim();
+    const brandLower = brand.toLowerCase();
+    if (withoutSuffix.toLowerCase().includes(brandLower)) {
+      normalized = withoutSuffix;
+    }
+  }
+  return normalized;
 }
 
 export function pageTitle(keyword: string, brand = t.site.name): string {

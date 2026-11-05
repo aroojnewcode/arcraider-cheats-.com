@@ -1,0 +1,22 @@
+---
+import { getSeoContextLinks } from '../config/seoContextLinks';
+
+interface Props {
+  pathname: string;
+}
+
+const { pathname } = Astro.props;
+const links = getSeoContextLinks(pathname);
+---
+
+<nav class="seo-context mx-auto max-w-6xl px-5 pb-6" aria-label="Related site pages">
+  <ul class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground">
+    {links.map((item) => (
+      <li>
+        <a href={item.href} class="hover:text-primary hover:underline">
+          {item.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

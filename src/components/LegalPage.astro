@@ -4,7 +4,6 @@ import Icon from './icons/Icon.astro';
 import { Button } from '@/components/starwind/button';
 import { Prose } from '@/components/starwind/prose';
 import { ROUTES } from '../utils/path';
-import SeoRelatedLinks from './SeoRelatedLinks.astro';
 
 interface Props {
   title: string;
@@ -41,8 +40,6 @@ const { title, description, breadcrumbLabel, sections } = Astro.props;
         </section>
       ))}
     </Prose>
-
-    <SeoRelatedLinks />
 
     <div class="mt-12 flex flex-wrap justify-center gap-3 border-t border-border pt-8">
       <Button as="a" href={ROUTES.support} variant="primary" size="sm">
