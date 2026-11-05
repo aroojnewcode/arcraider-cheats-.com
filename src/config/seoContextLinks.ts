@@ -110,9 +110,9 @@ const LINK_SETS: Record<string, SeoContextLink[]> = {
   '/blog/console-tips/': [
     { href: '/blog/cheat-codes/', label: 'Fake code lists versus loader article' },
     { href: '/blog/fov/', label: 'FOV tuning paired with ESP guide' },
-    { href: '/products/arcraider-hacks/', label: 'Arc Raiders products hub overview' },
-    { href: '/forum/spray-safe/', label: 'Forum: spray control practice thread' },
-    { href: '/blog/buy-guide/', label: 'Written checkout buy guide for tiers' },
+    { href: '/products/arcraider-hacks/', label: 'Live extraction loader catalog' },
+    { href: '/forum/spray-safe/', label: 'Spray control practice thread' },
+    { href: '/blog/buy-guide/', label: '2026 checkout walkthrough article' },
     { href: '/sitemap-blog.xml', label: 'Blog XML sitemap for console guides' },
   ],
 };

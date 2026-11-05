@@ -109,7 +109,7 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     h1: 'Arc Raiders hacks checkout buy guide: Lite, Pro & Elite (2026)',
   },
   '/blog/console-tips/': {
-    title: 'Arc Raiders – From practice commands to live Raid',
+    title: 'Arc Raiders – Admin commands are a warm-up, not a product',
     description:
       'Arc Raiders: Outgrown private-server practice? Compare undetected ESP and aimbot tiers for live PvP—Lite, Pro and Elite with secure checkout.',
     h1: 'From practice commands to live Arc Raiders ESP, aimbot & hacks',

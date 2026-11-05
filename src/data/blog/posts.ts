@@ -60,7 +60,7 @@ export const blogPosts: BlogPostFull[] = [
     date: "Aug 19, 2026",
     readTime: "6 min read",
     body: [
-      { type: 'p', text: "Practice commands on a training mode or private lobby are a fine warm-up, but they stop helping the moment you join a live raid. If your goal is better fights on Surface or Underground servers, the upgrade path is simple: pick a tier at the [products hub](/products/arcraider-hacks/), check out and run the loader. This guide shows how to decide which tier fits your Arc Raiders ESP and aimbot goals." },
+      { type: 'p', text: "Practice commands on a training mode or private lobby are a fine warm-up, but they stop helping the moment you join a live raid. If your goal is better fights on Surface or Underground servers, the upgrade path is simple: pick a tier at the [loader catalog](/products/arcraider-hacks/), check out and run the loader. This guide shows how to decide which tier fits your Arc Raiders ESP and aimbot goals." },
       { type: 'h2', text: "Admin commands are a warm-up, not a product" },
       { type: 'p', text: "Admin commands do not work on servers where you lack admin rights, and they give no ESP, no radar and no aim assist. Treat them as contrast: debug commands do not equal live-server cheats. To play with information and aim support, buy our loader for Surface raids and underground runs." },
       { type: 'h2', text: "Pick the upgrade that fits your problem" },
