@@ -4,7 +4,8 @@ import path from 'node:path';
 const root = process.cwd();
 const dist = path.join(root, 'dist');
 const source = path.join(dist, 'sitemap-0.xml');
-const siteOrigin = 'https://arcraiderhacks.com';
+const siteOrigin = (process.env.SITEMAP_ORIGIN || 'https://arcraiderhacks.com').replace(/\/$/, '');
+const siteHostname = new URL(siteOrigin).hostname;
 const URLSET_NS = 'http://www.sitemaps.org/schemas/sitemap/0.9';
 
 if (!fs.existsSync(source)) {
@@ -51,7 +52,7 @@ function parseUrlBlock(block) {
 function canonicalLoc(loc) {
   const url = new URL(loc);
   url.protocol = 'https:';
-  url.hostname = 'arcraiderhacks.com';
+  url.hostname = siteHostname;
   url.search = '';
   url.hash = '';
   let pathname = url.pathname;

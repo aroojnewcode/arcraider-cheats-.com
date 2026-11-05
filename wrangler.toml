@@ -3,9 +3,18 @@ name = "arcraider-hacks-net"
 compatibility_date = "2026-10-26"
 
 [build]
-command = "npm ci && npm run build"
+command = "npm ci && node scripts/cf-build.mjs"
 
 [assets]
 directory = "./dist"
 not_found_handling = "404-page"
 html_handling = "auto-trailing-slash"
+
+# Serve the same Worker on the production host so sitemap-*.xml returns 200 with XML.
+[[routes]]
+pattern = "arcraiderhacks.com"
+custom_domain = true
+
+[[routes]]
+pattern = "www.arcraiderhacks.com"
+custom_domain = true

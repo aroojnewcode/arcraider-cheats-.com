@@ -3,8 +3,10 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { sitemapSerialize } from './src/config/sitemap.ts';
 
+const siteOrigin = (process.env.SITE_ORIGIN || 'https://arcraiderhacks.com').replace(/\/$/, '');
+
 export default defineConfig({
-  site: 'https://arcraiderhacks.com',
+  site: siteOrigin,
   trailingSlash: 'always',
   redirects: {
     '/cheats/': '/products/arcraider-hacks/',

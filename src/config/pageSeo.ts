@@ -50,19 +50,19 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     title: 'Checkout – and secure payment flow at arcraiderhacks',
     description:
       'Checkout tips and secure payment flow—tier picks, portal access, HWID recovery notes, and post-purchase loader steps at arcraiderhacks.com.',
-    h1: 'Checkout & Lite, Pro, Elite Buy Guides for PC',
+    h1: 'Checkout at arcraiderhacks — secure payment flow & Lite, Pro, Elite buy guides for PC',
   },
   '/forum/': {
     title: 'Buyer Forum – ESP and radar setup Q&A from our guides',
     description:
       'Buyer forum: ESP and radar setup Q&A, HWID spoofer help, overlay tuning and tier picks before secure checkout on arcraiderhacks.com.',
-    h1: 'Buyer Forum — ESP, Radar, Spoofer Help & Utility Q&A',
+    h1: 'Buyer Forum — ESP and radar setup Q&A from our guides, spoofer help & utility Q&A',
   },
   '/forum/choose-tier/': {
     title: 'How do I choose the right Arc Raiders hacks tier to buy?',
     description:
       'Tier: Pick Lite, Pro or Elite hack tools by feature set, then follow secure checkout on arcraiderhacks.com. 48 d/community · Arc Raiders Hacks guide team.',
-    h1: 'Arc Raiders hacks tier: how to choose Lite, Pro or Elite to buy',
+    h1: 'How to choose the right Arc Raiders hacks tier: Lite, Pro or Elite to buy',
   },
   '/reviews/': {
     title: 'Arc Raiders Hacks Reviews | Buyer Ratings & Feedback',
@@ -84,7 +84,7 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     title: 'Cheats Store – patch-day loader updates and Discord help',
     description:
       'Cheats Store: Meet the arcraiderhacks.com hacks store team—tiers, utilities, patch-day loader updates and Discord help after checkout on PC.',
-    h1: 'About Our Cheats Store — Steam PC Tools',
+    h1: 'About Our Cheats Store — patch-day loader updates & Discord help on Steam PC',
   },
   '/support/': {
     title: 'Arc Raiders Hacks Discord Support | Loader Help Tickets',
@@ -109,13 +109,13 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     h1: 'Arc Raiders hacks checkout buy guide: Lite, Pro & Elite (2026)',
   },
   '/blog/console-tips/': {
-    title: 'From practice commands to live Arc Raid | Raiders Hacks',
+    title: 'Arc Raiders – From practice commands to live Arc Raid',
     description:
       'Arc Raiders: Outgrown private-server practice? Compare undetected ESP and aimbot tiers for live PvP—Lite, Pro and Elite with secure checkout.',
     h1: 'From practice commands to live Arc Raiders ESP, aimbot & hacks',
   },
   '/blog/cheat-codes/': {
-    title: 'Arc Raiders loader vs fake code lists: | Hacks',
+    title: 'Codes – See what works on live extraction raids and when a',
     description:
       'Admin console codes only work where you are admin. See what works on live extraction raids and when a private loader with ESP and aimbot is the right buy.',
     h1: 'Arc Raiders loader vs fake code lists: what works on live raids | Hacks',

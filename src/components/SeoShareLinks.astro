@@ -4,10 +4,11 @@ import { canonicalUrl } from '../config/seo';
 interface Props {
   pageTitle: string;
   pathname: string;
+  pageUrl?: string;
 }
 
-const { pageTitle, pathname } = Astro.props;
-const pageUrl = canonicalUrl(pathname);
+const { pageTitle, pathname, pageUrl: pageUrlProp } = Astro.props;
+const pageUrl = pageUrlProp ?? canonicalUrl(pathname);
 const encodedUrl = encodeURIComponent(pageUrl);
 const encodedTitle = encodeURIComponent(pageTitle);
 

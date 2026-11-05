@@ -171,6 +171,8 @@ const additionalGuidePosts: ForumPost[] = [
     extraBody: [
       'Lite fits awareness-only players who want player ESP, loot lines and radar without aim automation. Pro adds aimbot, no recoil and Smart Aim for busier PvPvE weeks. Elite bundles loot assist, Skin Changer and priority patch delivery when you want every module in one license.',
       'Open the tier comparison on the products hub, confirm the live status banner, then checkout when your Windows build matches the published requirements.',
+      'If you are unsure after reading the buy guide, skim the features article for module lists, note which combat tools you actually use in raids, and pick the smallest license that still covers those modules—you can review upgrade paths in Discord before paying.',
+      'Delivery is the same for Lite, Pro and Elite: pay on the checkout partner, open the operator portal with your order email, download the current loader, then confirm the status banner is green before you queue for a raid.',
     ],
   }),
 ];
