@@ -109,7 +109,7 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     h1: 'Arc Raiders hacks checkout buy guide: Lite, Pro & Elite (2026)',
   },
   '/blog/console-tips/': {
-    title: 'Arc Raiders – From practice commands to live Arc Raid',
+    title: 'Arc Raiders – From practice commands to live Raid',
     description:
       'Arc Raiders: Outgrown private-server practice? Compare undetected ESP and aimbot tiers for live PvP—Lite, Pro and Elite with secure checkout.',
     h1: 'From practice commands to live Arc Raiders ESP, aimbot & hacks',
@@ -118,7 +118,13 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     title: 'Codes – See what works on live extraction raids and when a',
     description:
       'Admin console codes only work where you are admin. See what works on live extraction raids and when a private loader with ESP and aimbot is the right buy.',
-    h1: 'Arc Raiders loader vs fake code lists: what works on live raids | Hacks',
+    h1: 'Codes: Arc Raiders loader vs fake lists — what works on live extraction raids and when',
+  },
+  '/blog/bones/': {
+    title: 'Buy Pro aimbot bone select & weapon | Arc Raiders Hacks',
+    description:
+      'Buy Pro for aimbot bone select and per-weapon recoil profiles on Kettle, Tempest, Rattler and Ferro. See example profiles and get access.',
+    h1: 'Buy Pro Arc Raiders hacks aimbot bone select & weapon profiles',
   },
   '/blog/features/': {
     title: 'Features – Arc Raiders Hacks by tier | Meet arcraiderhacks',

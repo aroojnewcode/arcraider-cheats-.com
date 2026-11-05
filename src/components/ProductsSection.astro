@@ -29,6 +29,24 @@ function cardLabel(product: (typeof productPages)[number]) {
   }
   return product.category ?? 'Utility';
 }
+
+const buyLabelBySlug: Record<string, string> = {
+  lite: 'Checkout Lite ESP tier',
+  pro: 'Checkout Pro combat tier',
+  elite: 'Checkout Elite full suite',
+  'hwid-spoofer': 'Checkout HWID spoofer',
+  ugc: 'Checkout UGC recovery',
+  'unlock-all': 'Checkout Unlock All skins',
+};
+
+const viewLabelBySlug: Record<string, string> = {
+  lite: 'View Lite ESP listing',
+  pro: 'View Pro combat listing',
+  elite: 'View Elite suite listing',
+  'hwid-spoofer': 'View HWID spoofer listing',
+  ugc: 'View UGC recovery listing',
+  'unlock-all': 'View Unlock All listing',
+};
 ---
 
 <section id="products" class="py-16 md:py-24" aria-labelledby="products-title">
@@ -60,8 +78,8 @@ function cardLabel(product: (typeof productPages)[number]) {
                       icon={cardIcon(product)}
                       badge={product.badge}
                       variant={product.variant}
-                      buyLabel="Get access"
-                      viewLabel="View details"
+                      buyLabel={buyLabelBySlug[product.slug] ?? 'Get portal access via checkout'}
+                      viewLabel={viewLabelBySlug[product.slug] ?? 'View product listing'}
                       maxFeatures={5}
                     />
                   </CarouselItem>

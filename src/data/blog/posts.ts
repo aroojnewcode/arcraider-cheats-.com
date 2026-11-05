@@ -48,7 +48,7 @@ export const blogPosts: BlogPostFull[] = [
         text: "Compare Lite, Pro and Elite, then check out securely to run ESP and aimbot on live raids.",
         href: "/go/arc-raiders/",
       },
-      { type: 'p', text: "Next: [compare tiers](/products/arcraider-hacks/) and [get access](/go/arc-raiders/), or read the [features guide](/blog/features/) first." },
+      { type: 'p', text: "Next: [open the products hub](/products/arcraider-hacks/) and [start secure checkout](/go/arc-raiders/), or read the [features guide](/blog/features/) first." },
     ],
   },
   {
@@ -87,7 +87,7 @@ export const blogPosts: BlogPostFull[] = [
         ],
       },
       { type: 'h2', text: "Compare tiers, then buy" },
-      { type: 'p', text: "Read [Lite vs Pro](/blog/lite-vs-pro/) for the closest decision, the [Elite tier guide](/blog/elite/) for the full suite, and the [features guide](/blog/features/) for every module. Then [compare tiers](/products/arcraider-hacks/) and [get access](/go/arc-raiders/)." },
+      { type: 'p', text: "Read [Lite vs Pro](/blog/lite-vs-pro/) for the closest decision, the [Elite tier guide](/blog/elite/) for the full suite, and the [features guide](/blog/features/) for every module. Then [open the products hub](/products/arcraider-hacks/) and [pay for a live ESP license](/go/arc-raiders/)." },
       {
         type: 'cta',
         title: "Upgrade to live-server tools",
@@ -152,7 +152,7 @@ export const blogPosts: BlogPostFull[] = [
     featured: true,
     author: "Arc Raiders Hacks Editorial",
     body: [
-      { type: 'p', text: "This features guide maps every module in our external suite for PC to the tier that includes it—ESP, aimbot, no recoil, utilities—so you can decide what to buy before checkout. Admin console commands are a different thing—they do not equal live-server loaders. To run ESP and aimbot on Surface raids and underground runs, [compare tiers](/products/arcraider-hacks/) and get access." },
+      { type: 'p', text: "This features guide maps every module in our external suite for PC to the tier that includes it—ESP, aimbot, no recoil, utilities—so you can decide what to buy before checkout. Admin console commands are a different thing—they do not equal live-server loaders. To run ESP and aimbot on Surface raids and underground runs, [see the products hub](/products/arcraider-hacks/) and get access." },
       { type: 'h2', text: "Features by tier" },
       {
         type: 'table',
@@ -378,7 +378,7 @@ export const blogPosts: BlogPostFull[] = [
         text: "Aimbot, Soft Aim and No Recoil for live PvP—secure checkout at arcraiderhacks.com.",
         href: "/go/arc-raiders/",
       },
-      { type: 'p', text: "[Compare tiers](/products/arcraider-hacks/) → [Get access](/go/arc-raiders/). No setting is ban-proof; humanized values reduce reports." },
+      { type: 'p', text: "[See Pro on the products hub](/products/arcraider-hacks/) → [pay for aimbot access](/go/arc-raiders/). No setting is ban-proof; humanized values reduce reports." },
     ],
   },
   {
@@ -610,7 +610,7 @@ export const blogPosts: BlogPostFull[] = [
         text: "Lite, Pro and Elite ship through secure checkout at arcraiderhacks.com.",
         href: "/go/arc-raiders/",
       },
-      { type: 'p', text: "[Compare tiers](/products/arcraider-hacks/) → [Get access](/go/arc-raiders/). Software for Arc Raiders carries ban risk; read the terms and live status before you buy." },
+      { type: 'p', text: "[Open live prices on the products hub](/products/arcraider-hacks/) → [complete the 2026 checkout](/go/arc-raiders/). Software for Arc Raiders carries ban risk; read the terms and live status before you buy." },
     ],
   },
   {
@@ -649,7 +649,7 @@ export const blogPosts: BlogPostFull[] = [
         text: "Aimbot, Bone Select and No Recoil profiles—secure checkout at arcraiderhacks.com.",
         href: "/go/arc-raiders/",
       },
-      { type: 'p', text: "[Compare tiers](/products/arcraider-hacks/) → [Get access](/go/arc-raiders/). Treat every value as a starting point; aim assist carries ban risk." },
+      { type: 'p', text: "[Open the Pro product page](/products/arcraider-hacks/) → [pay for weapon profiles](/go/arc-raiders/). Treat every value as a starting point; aim assist carries ban risk." },
     ],
   },
   {
