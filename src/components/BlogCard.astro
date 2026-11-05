@@ -28,6 +28,7 @@ const { post, index = 0, eager = false, showDate = false, layout = 'default', cl
   Astro.props;
 const isFeatured = layout === 'featured';
 const href = blogPostPath(post.slug);
+const cover = post.image?.trim() || `/images/blog/${post.slug}.png`;
 const readCtaLabel = `Read ${post.slug.replace(/-/g, ' ')} guide`;
 const timestamp = getBlogPostTimestamp(post.date);
 const readMinutes = getBlogReadMinutes(post.readTime);
@@ -49,7 +50,7 @@ const tagIcon: IconName = blogTagIcons[post.tag] ?? 'tag';
   data-read-minutes={readMinutes}
 >
   {
-    post.image ? (
+    cover ? (
       <a
         href={href}
         class:list={[
@@ -60,7 +61,7 @@ const tagIcon: IconName = blogTagIcons[post.tag] ?? 'tag';
         aria-hidden="true"
       >
         <ResponsiveImage
-          src={post.image}
+          src={cover}
           alt={`${post.title} — Arc Raiders hacks guide`}
           width={isFeatured ? 960 : 640}
           height={isFeatured ? 540 : 360}
@@ -115,7 +116,7 @@ const tagIcon: IconName = blogTagIcons[post.tag] ?? 'tag';
       ]}
     >
       {
-        !post.image ? (
+        !cover ? (
           <div class="flex flex-wrap items-center gap-2 pb-1">
             <Badge tone="neutral" appearance="outline" size="sm" class="gap-1.5">
               <Icon name={tagIcon} size={14} />

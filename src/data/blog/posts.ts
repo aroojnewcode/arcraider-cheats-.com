@@ -617,6 +617,7 @@ export const blogPosts: BlogPostFull[] = [
     tag: "Setup",
     title: "Buy Pro aimbot bone select & weapon profiles",
     slug: "bones",
+    image: "/images/blog/bones.png",
     desc: "Buy Pro for aimbot bone select and per-weapon recoil profiles on Kettle, Tempest, Rattler and Ferro. See example profiles and get access.",
     date: "Aug 12, 2026",
     readTime: "6 min read",

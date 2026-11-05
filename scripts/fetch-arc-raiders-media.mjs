@@ -113,11 +113,6 @@ for (let i = 0; i < BLOG_FILES.length; i++) {
   console.log('Blog', BLOG_FILES[i]);
 }
 
-const bonesPath = path.join(blogDir, 'bones.png');
-if (fs.existsSync(bonesPath)) fs.unlinkSync(bonesPath);
-for (const w of [320, 400, 512, 640, 960]) {
-  const webp = path.join(blogDir, `bones-${w}.webp`);
-  if (fs.existsSync(webp)) fs.unlinkSync(webp);
-}
+/** bones.png is maintained manually (weapon profiles guide); do not overwrite or delete here. */
 
 console.log('Arc Raiders media import complete.');

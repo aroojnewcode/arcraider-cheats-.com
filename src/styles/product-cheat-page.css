@@ -156,6 +156,26 @@
   padding-bottom: 0.5rem;
 }
 
+.catalog-card__footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.catalog-card__footer-btn {
+  min-width: 0;
+  width: 100%;
+  height: auto;
+  min-height: 2.5rem;
+  justify-content: center;
+  text-align: center;
+  white-space: normal !important;
+  line-height: 1.2;
+  padding-inline: 0.5rem;
+}
+
 .catalog-card--carousel [data-slot='card-footer'] {
   padding-top: 0.75rem;
 }
