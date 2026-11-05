@@ -28,7 +28,9 @@ const breadcrumbs = [
 const featured = getFeaturedBlogPost();
 const gridPosts = getNonFeaturedBlogPosts();
 const tags = getBlogTags();
-const lcpImage = webpSrc(featured?.image ?? blogPosts[0]!.image, CARD_IMAGE_WIDTHS[0]);
+const lcpSource =
+  featured?.image ?? blogPosts.find((p) => p.image)?.image ?? '/images/gameplay/arc-raiders-map-hack.png';
+const lcpImage = webpSrc(lcpSource, CARD_IMAGE_WIDTHS[0]);
 
 const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
 ---

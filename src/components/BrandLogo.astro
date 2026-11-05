@@ -1,0 +1,14 @@
+---
+import { SITE_LOGO } from '../config/site';
+import { t } from '../i18n';
+
+interface Props {
+  size?: number;
+  class?: string;
+}
+
+const { size = 32, class: className = 'rounded-md shrink-0' } = Astro.props;
+const alt = `${t.site.name} logo`;
+---
+
+<img src={SITE_LOGO} alt={alt} width={size} height={size} class={className} loading="eager" decoding="async" />

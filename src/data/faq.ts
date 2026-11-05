@@ -29,25 +29,25 @@ function link(text: string, href: string): string {
   return `<a href="${normalizeInternalPath(href)}">${text}</a>`;
 }
 
-const elite = link('Rust Elite', productPath('elite'));
+const elite = link('Arc Raiders Elite', productPath('elite'));
 const lite = link('Lite tier (ESP & radar)', ROUTES.products);
 const pro = link('Pro tier (aimbot & no recoil)', ROUTES.products);
-const productsHub = link('Rust cheat products', ROUTES.products);
+const productsHub = link('Arc Raiders hack products', ROUTES.products);
 const hwid = link('HWID Spoofer', productPath('hwid-spoofer'));
 const ugc = link('UGC', productPath('ugc'));
 const skin = link('Skin Changer', productPath('unlock-all'));
 const faqPage = link('full FAQ', ROUTES.faq);
 const blog = link('blog guides', ROUTES.blog);
 
-const guideFeatures = link('Rust cheats features guide', blogPostPath('features'));
+const guideFeatures = link('Arc Raiders hacks features guide', blogPostPath('features'));
 const guideLiteVsPro = link('Lite vs Pro guide', blogPostPath('lite-vs-pro'));
 const guideElite = link('Elite tier guide', blogPostPath('elite'));
 const guideEsp = link('ESP and radar setup guide', blogPostPath('esp'));
 const guidePatch = link('EAC patch day checklist', blogPostPath('eac-patch'));
-const guideBuy = link('how to buy Rust cheats in 2026', blogPostPath('buy-guide'));
+const guideBuy = link('how to buy Arc Raiders hacks in 2026', blogPostPath('buy-guide'));
 const guideExternal = link('external cheat guide', blogPostPath('external'));
 const guideStream = link('stream-proof setup guide', blogPostPath('stream-proof'));
-const guideAdmin = link('F1 console and admin commands guide', blogPostPath('cheat-codes'));
+const guideAdmin = link('in-game console and debug commands guide', blogPostPath('cheat-codes'));
 const guideHwid = link('HWID spoofer vs new account guide', blogPostPath('hwid'));
 const guideEacInit = link('EAC failed to initialize troubleshooting guide', blogPostPath('eac-error'));
 const guideRecoil = link('aimbot and recoil scripts guide', blogPostPath('aimbot'));
@@ -57,29 +57,29 @@ export const siteFaqs: SiteFaqItem[] = [
     id: 'status',
     topic: 'setup',
     icon: 'faqStatus',
-    q: 'Where do I check if Rust cheats are online?',
-    a: a('The live status banner is on rust-cheats.net and in the Discord #status channel. Always check it after a Rust update, a force wipe patch, or an Easy Anti-Cheat (EAC) update.'),
+    q: 'Where do I check if Arc Raiders hacks are online?',
+    a: a('The live status banner is on arcraiderhacks.com and in the Discord #status channel. Always check it after an Arc Raiders update or a major anti-cheat patch, or an Easy Anti-Cheat (EAC) update.'),
   },
   {
     id: 'after-buy',
     topic: 'setup',
     icon: 'faqAfterBuy',
     q: 'What happens after I buy?',
-    a: a('Your portal unlocks the loader, setup guide and config library via our secure checkout. Follow the guide before launching Rust, and start the loader before the game so EAC sees a clean launch order.'),
+    a: a('Your portal unlocks the loader, setup guide and config library via our secure checkout. Follow the guide before launching Arc Raiders, and start the loader before the game so EAC sees a clean launch order.'),
   },
   {
     id: 'ban-risk',
     topic: 'safety',
     icon: 'faqBanRisk',
-    q: 'Can I get banned using Rust cheats?',
-    a: a('Yes—any third-party software carries risk. EAC, Facepunch server-side checks and admin reports all evolve, and Rust bans can follow your Steam account and hardware. Read the current status and accept the risk before use.'),
+    q: 'Can I get banned using Arc Raiders hacks?',
+    a: a('Yes—any third-party software carries risk. EAC, Embark Studios server-side checks and admin reports all evolve, and Arc Raiders bans can follow your Embark account and hardware. Read the current status and accept the risk before use.'),
   },
   {
     id: 'platforms',
     topic: 'setup',
     icon: 'faqPlatforms',
     q: 'Which platforms are supported?',
-    a: a('Rust on Steam for PC, Windows 10/11 64-bit only. Rust Console Edition, macOS and Linux are not supported.'),
+    a: a('Arc Raiders on Steam for PC, Windows 10/11 64-bit only. Arc Raiders Console Edition, macOS and Linux are not supported.'),
   },
   {
     id: 'license-move',
@@ -93,14 +93,14 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'products',
     icon: 'faqProductsPage',
     q: 'Where are products and utilities listed?',
-    a: `${productsHub} lists cheat tiers, ${hwid}, ${ugc}, and ${skin} with feature lists and checkout via our partner.`,
+    a: `${productsHub} lists hack tiers, ${hwid}, ${ugc}, and ${skin} with feature lists and checkout via our partner.`,
   },
   {
     id: 'what-is-esp',
     topic: 'esp',
     icon: 'faqWhatIsEsp',
-    q: 'What is Rust ESP and what does it show?',
-    a: `Player ESP draws boxes, names, health, distance and skeletons through walls and terrain. Loot ESP marks crates, barrels, stashes, ore nodes and dropped items. ${lite} covers the full awareness overlay. ${pro} and ${elite} add aim assist on top. Setup details are in the ${guideEsp}.`,
+    q: 'What is Arc Raiders ESP and what does it show?',
+    a: `Player ESP draws boxes, names, health, distance and skeletons through walls and terrain. Loot ESP marks containers, stashes, salvage nodes and dropped items. ${lite} covers the full awareness overlay. ${pro} and ${elite} add aim assist on top. Setup details are in the ${guideEsp}.`,
     scopes: ['lite', 'pro', 'elite'],
   },
   {
@@ -115,7 +115,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'plans',
     icon: 'faqWhichTierEsp',
     q: 'Which tier do I need for ESP only?',
-    a: `${lite} is awareness only: Player ESP, Loot & Resource ESP, radar, FOV hack and stream-proof overlay. ${pro} adds Aimbot, Soft Aim and No Recoil. ${elite} adds farm helpers, Skin Changer and priority patches.`,
+    a: `${lite} is awareness only: Player ESP, Loot & Resource ESP, radar, FOV hack and stream-proof overlay. ${pro} adds Aimbot, Soft Aim and No Recoil. ${elite} adds loot assist tools, Skin Changer and priority patches.`,
     scopes: ['lite'],
   },
   {
@@ -123,7 +123,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'scripts',
     icon: 'faqWhichTierScripts',
     q: 'Which tier includes Aimbot and No Recoil?',
-    a: `${pro} ships Aimbot, Soft Aim, Bone Select, Trigger Bot and No Recoil / Spread. ${elite} includes everything in Pro plus Auto Farm Helpers and Skin Changer. ${lite} has no aim assist—it is overlay only.`,
+    a: `${pro} ships Aimbot, Soft Aim, Bone Select, Trigger Bot and No Recoil / Spread. ${elite} includes everything in Pro plus Loot Route Assist and Skin Changer. ${lite} has no aim assist—it is overlay only.`,
     scopes: ['pro'],
   },
   {
@@ -138,8 +138,8 @@ export const siteFaqs: SiteFaqItem[] = [
     id: 'no-recoil',
     topic: 'scripts',
     icon: 'faqWhichTierScripts',
-    q: 'How does No Recoil work in Rust?',
-    a: `No Recoil / Spread compensates for weapon recoil with per-weapon profiles—AK, LR-300, MP5, M249, bolt and more. Keep compensation below 100% so sprays still look natural, and test each weapon on a private or practice server before wiping your kit on a live one.`,
+    q: 'How does No Recoil work in Arc Raiders?',
+    a: `No Recoil / Spread compensates for weapon recoil with per-weapon profiles—Kettle, Tempest, Rattler, Hullcracker, Ferro and more. Keep compensation below 100% so sprays still look natural, and test each weapon on a private or practice server before wiping your kit on a live one.`,
     scopes: ['pro', 'elite'],
   },
   {
@@ -147,14 +147,14 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'plans',
     icon: 'faqRankTiers',
     q: 'How do you rank Lite vs Pro vs Elite?',
-    a: `ESP and radar only → ${lite}. Gunfights with aim assist → ${pro}. Full suite, farm helpers and priority patches → ${elite}. Compare on each cheat page, in the ${guideLiteVsPro}, or in the ${faqPage}.`,
+    a: `ESP and radar only → ${lite}. Gunfights with aim assist → ${pro}. Full suite, loot assist tools and priority patches → ${elite}. Compare on each cheat page, in the ${guideLiteVsPro}, or in the ${faqPage}.`,
   },
   {
     id: 'elite-slots',
     topic: 'plans',
     icon: 'faqEliteSlots',
     q: 'Why is Elite limited slots?',
-    a: `Elite is a private build with direct dev support and priority patch delivery. Slot caps keep patch cycles fast, especially on Rust update and EAC patch days. Check the status banner before checkout, or read the ${guideElite}.`,
+    a: `Elite is a private build with direct dev support and priority patch delivery. Slot caps keep patch cycles fast, especially on Arc Raiders update and EAC patch days. Check the status banner before checkout, or read the ${guideElite}.`,
     scopes: ['elite'],
   },
   {
@@ -168,7 +168,7 @@ export const siteFaqs: SiteFaqItem[] = [
     id: 'undetected',
     topic: 'safety',
     icon: 'faqUndetected',
-    q: 'Are undetected Rust cheats guaranteed?',
+    q: 'Are undetected Arc Raiders hacks guaranteed?',
     a: a('No. Undetected is the current status on the product page—not a permanent guarantee. Stop if the build shows updating, testing or detected, and never play on your main account while a status is unclear.'),
   },
   {
@@ -183,7 +183,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'products',
     icon: 'faqHwidWhen',
     q: 'When do I need the HWID Spoofer?',
-    a: `Use ${hwid} when a fresh Steam account gets blocked instantly on one PC but works on another—a hardware-level restriction. It is not for account-only bans; see ${ugc} for appeal workflows instead.`,
+    a: `Use ${hwid} when a fresh Embark account gets blocked instantly on one PC but works on another—a hardware-level restriction. It is not for account-only bans; see ${ugc} for appeal workflows instead.`,
     scopes: ['hwid-spoofer'],
   },
   {
@@ -191,14 +191,14 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'safety',
     icon: 'faqHwidWhen',
     q: 'Do I need a new account and a spoofer after an EAC ban?',
-    a: `Usually both: a new Steam account with Rust, plus ${hwid} if the ban is tied to your hardware. Read the ${guideHwid} before buying anything, and never reuse the banned account on your main PC.`,
+    a: `Usually both: a new Embark account with Arc Raiders, plus ${hwid} if the ban is tied to your hardware. Read the ${guideHwid} before buying anything, and never reuse the banned account on your main PC.`,
   },
   {
     id: 'ugc-what',
     topic: 'products',
     icon: 'faqUgcWhat',
     q: 'What is UGC?',
-    a: `${ugc} (Unban & Governance Control) is an appeal workspace for Facepunch and EAC bans and Steam restrictions—custom workflows and case tracking, not a guaranteed unban service.`,
+    a: `${ugc} (Unban & Governance Control) is an appeal workspace for Embark Studios and EAC bans and Steam restrictions—custom workflows and case tracking, not a guaranteed unban service.`,
     scopes: ['ugc'],
   },
   {
@@ -213,15 +213,15 @@ export const siteFaqs: SiteFaqItem[] = [
     id: 'external-loader',
     topic: 'products',
     icon: 'faqExternalLoader',
-    q: 'Is the loader injected into the Rust folder?',
-    a: `Rust Cheats runs external with cloud config sync—no files are written into the Rust install directory. EAC risk still applies. See the ${guideExternal} and ${productsHub}.`,
+    q: 'Is the loader injected into the Arc Raiders folder?',
+    a: `Arc Raiders Hacks runs external with cloud config sync—no files are written into the Arc Raiders install directory. EAC risk still applies. See the ${guideExternal} and ${productsHub}.`,
   },
   {
     id: 'blog-vs-cheats',
     topic: 'blog',
     icon: 'faqBlogVsCheats',
-    q: 'Are F1 admin commands the same as Rust cheats?',
-    a: `No. F1 console commands like noclip, god and give only work for admins on servers you own or moderate. Paid Rust cheats are separate products for live servers—see ${lite}, ${pro} and ${elite}, and the ${guideAdmin}.`,
+    q: 'Are single-player debug commands the same as Arc Raiders hacks?',
+    a: `No. in-game console commands like dev-only debug toggles only work for admins on servers you own or moderate. Paid Arc Raiders hacks are separate products for live raids—see ${lite}, ${pro} and ${elite}, and the ${guideAdmin}.`,
   },
   {
     id: 'blog-setup',
@@ -235,7 +235,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'plans',
     icon: 'faqComparePlans',
     q: 'Where do I compare plans side by side?',
-    a: `Each cheat tier page includes a compare table. The ${faqPage} collects product, cheat and blog answers in one place, and the ${guideFeatures} maps every module to a tier.`,
+    a: `Each hack tier page includes a compare table. The ${faqPage} collects product, cheat and blog answers in one place, and the ${guideFeatures} maps every module to a tier.`,
   },
   {
     id: 'who-lite',
@@ -250,7 +250,7 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'plans',
     icon: 'faqWhoPro',
     q: 'Who should buy Pro?',
-    a: `PvP players who want Aimbot, Soft Aim and No Recoil with ESP and radar included. Pro is the most popular tier at rust-cheats.net.`,
+    a: `PvP players who want Aimbot, Soft Aim and No Recoil with ESP and radar included. Pro is the most popular tier at arcraiderhacks.com.`,
     scopes: ['pro'],
   },
   {
@@ -258,36 +258,36 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'plans',
     icon: 'faqWhoElite',
     q: 'Who should buy Elite?',
-    a: `Operators who want Auto Farm Helpers, Skin Changer and priority patch delivery when slots are open.`,
+    a: `Operators who want Loot Route Assist, Skin Changer and priority patch delivery when slots are open.`,
     scopes: ['elite'],
   },
   {
     id: 'eac-update',
     topic: 'safety',
     icon: 'faqEacUpdate',
-    q: 'What should I do after an EAC or Rust update?',
-    a: a('Check rust-cheats.net status and Discord #status. Do not launch until the banner shows online. Reload your loader, then use conservative presets and test on a quiet server first. The EAC patch day checklist covers the full routine.'),
+    q: 'What should I do after an EAC or Arc Raiders update?',
+    a: a('Check arcraiderhacks.com status and Discord #status. Do not launch until the banner shows online. Reload your loader, then use conservative presets and test on a quiet test session first. The EAC patch day checklist covers the full routine.'),
   },
   {
     id: 'eac-init',
     topic: 'setup',
     icon: 'faqEacUpdate',
     q: 'EAC says it failed to initialize—is that a ban?',
-    a: `Usually not. It is most often a broken EAC install, a service conflict or a blocked driver. Verify Rust files in Steam, reinstall EAC from the Rust folder and restart before assuming a ban. See the ${guideEacInit}; if it is a real ban, check ${ugc}.`,
+    a: `Usually not. It is most often a broken EAC install, a service conflict or a blocked driver. Verify Arc Raiders files in Steam, reinstall EAC from the Arc Raiders folder and restart before assuming a ban. See the ${guideEacInit}; if it is a real ban, check ${ugc}.`,
   },
   {
     id: 'discord-help',
     topic: 'setup',
     icon: 'faqDiscordHelp',
     q: 'How do I get install help?',
-    a: a('Open Discord after purchase with your order email, Windows version and Rust build number. Staff walk through loader setup live.'),
+    a: a('Open Discord after purchase with your order email, Windows version and Arc Raiders build number. Staff walk through loader setup live.'),
   },
   {
     id: 'server-types',
     topic: 'plans',
     icon: 'faqServerModes',
-    q: 'Do tiers work on Official, Community and Modded servers?',
-    a: `Yes—${lite}, ${pro} and ${elite} include presets for Official, Community and Modded servers in the portal. Tune ESP distance, aim FOV and smoothing before your first raid or monument run.`,
+    q: 'Do tiers work on Surface, Underground and PvPvE sessions?',
+    a: `Yes—${lite}, ${pro} and ${elite} include presets for Surface, Underground and PvPvE sessions in the portal. Tune ESP distance, aim FOV and smoothing before your first extraction run or POI push.`,
   },
   {
     id: 'zoom-hack',
@@ -302,23 +302,23 @@ export const siteFaqs: SiteFaqItem[] = [
     topic: 'esp',
     icon: 'faqWhatIsEsp',
     q: 'What does Loot & Resource ESP highlight?',
-    a: `Crates, barrels, stashes, airdrops, ore and tree nodes, and dropped items—filtered by type and distance. All tiers include it, and the ${guideEsp} explains how to keep the screen readable.`,
+    a: `Containers, stashes, supply drops, salvage and crafting nodes, and dropped items—filtered by type and distance. All tiers include it, and the ${guideEsp} explains how to keep the screen readable.`,
     scopes: ['lite', 'pro', 'elite'],
   },
   {
     id: 'auto-farm',
     topic: 'scripts',
     icon: 'faqAutoFarm',
-    q: 'Which tier includes Auto Farm Helpers?',
-    a: `Auto Farm Helpers for resource and loot routes are ${elite} only. ${pro} covers aim assist without farm automation.`,
+    q: 'Which tier includes Loot Route Assist?',
+    a: `Loot Route Assist for resource and loot routes are ${elite} only. ${pro} covers aim assist without farm automation.`,
     scopes: ['elite'],
   },
   {
     id: 'private-cheats',
     topic: 'safety',
     icon: 'faqPrivateCheats',
-    q: 'What are private Rust cheats?',
-    a: a('Private means per-user keys and maintained builds—not public zip packs. Rust Cheats ships portal delivery for ESP, aim assist and radar tiers.'),
+    q: 'What are private Arc Raiders hacks?',
+    a: a('Private means per-user keys and maintained builds—not public zip packs. Arc Raiders Hacks ships portal delivery for ESP, aim assist and radar tiers.'),
   },
   {
     id: 'faq-more',
@@ -341,9 +341,9 @@ export function getAllFaqs(): SiteFaqItem[] {
 
 /** Shared FAQ block copy + filters (home, /faq/, products, blog). */
 export const SITE_FAQ_SECTION_COPY = {
-  eyebrow: 'Rust topics',
-  title: 'Browse Rust cheat answers by category',
-  subtitle: 'Filter Rust plans, ESP, aimbot, products, setup and buy-guide answers.',
+  eyebrow: 'Arc Raiders topics',
+  title: 'Browse Arc Raiders hack answers by category',
+  subtitle: 'Filter Arc Raiders plans, ESP, aimbot, products, setup and buy-guide answers.',
 } as const;
 
 export const SITE_FAQ_FILTER_TOPICS: FaqTopic[] = [
@@ -403,8 +403,8 @@ const blogTopicFaqs: Record<string, SiteFaqItem[]> = {
       id: 'blog-guide-start',
       topic: 'blog',
       icon: 'faqBlogGuideStart',
-      q: 'Should I use F1 admin commands on official servers?',
-      a: a('No. Admin commands like noclip, god and give only work for admins on servers you own or moderate. Live-server play needs separate Rust cheats from rust-cheats.net tiers—and carries ban risk.'),
+      q: 'Should I use single-player debug commands on live extraction raids?',
+      a: a('No. Admin commands like dev-only debug toggles only work for admins on servers you own or moderate. Live-server play needs separate Arc Raiders hacks from arcraiderhacks.com tiers—and carries ban risk.'),
     },
     {
       id: 'blog-guide-tier',
@@ -418,7 +418,7 @@ const blogTopicFaqs: Record<string, SiteFaqItem[]> = {
       topic: 'blog',
       icon: 'faqBlogGuideStatus',
       q: 'Is this guide still valid after a patch?',
-      a: a('Check the article date and the live status banner. Patch-day articles note when modules change—Discord #status has the latest build notes after each Rust update or force wipe.'),
+      a: a('Check the article date and the live status banner. Patch-day articles note when modules change—Discord #status has the latest build notes after each Arc Raiders update or major patch.'),
     },
   ],
   Setup: [
@@ -433,8 +433,8 @@ const blogTopicFaqs: Record<string, SiteFaqItem[]> = {
       id: 'blog-setup-lobby',
       topic: 'blog',
       icon: 'faqBlogSetupLobby',
-      q: 'Should I test on a quiet server first?',
-      a: a('Yes. Load conservative presets on a low-pop or private server before busy Official or Community servers. Tune aim FOV, smoothing and ESP distance caps over several sessions.'),
+      q: 'Should I test on a quiet test session first?',
+      a: a('Yes. Load conservative presets on a low-pop or training mode or private lobby before busy Surface or Underground servers. Tune aim FOV, smoothing and ESP distance caps over several sessions.'),
     },
   ],
   Features: [
@@ -443,7 +443,7 @@ const blogTopicFaqs: Record<string, SiteFaqItem[]> = {
       topic: 'blog',
       icon: 'faqBlogGuideTier',
       q: 'Are all modules in this article on every tier?',
-      a: `No. Lite is ESP, radar and FOV only; ${pro} adds Aimbot, Soft Aim and No Recoil; ${elite} adds farm helpers and Skin Changer. Check the compare table before checkout.`,
+      a: `No. Lite is ESP, radar and FOV only; ${pro} adds Aimbot, Soft Aim and No Recoil; ${elite} adds loot assist tools and Skin Changer. Check the compare table before checkout.`,
     },
   ],
   Updates: [
@@ -495,7 +495,7 @@ const defaultBlogFaqs: SiteFaqItem[] = [
     topic: 'blog',
     icon: 'faqBlogDefault3',
     q: 'Will settings in this article work next patch?',
-    a: a('Re-check status after every Rust update. Portal presets update with patch notes—reload configs instead of copying old sliders.'),
+    a: a('Re-check status after every Arc Raiders update. Portal presets update with patch notes—reload configs instead of copying old sliders.'),
   },
 ];
 
@@ -565,9 +565,9 @@ export const compareRows = [
   { feature: 'Bone Select (head / chest / body)', icon: 'boneSelect' as const, lite: false, pro: true, elite: true },
   { feature: 'Aim FOV circle & target selector', icon: 'compareTargetSelector' as const, lite: false, pro: true, elite: true },
   { feature: 'No Recoil / Spread', icon: 'noRecoil' as const, lite: false, pro: true, elite: true },
-  { feature: 'Weapon recoil profiles (AK, LR-300, MP5)', icon: 'stepCrosshair' as const, lite: false, pro: true, elite: true },
+  { feature: 'Weapon recoil profiles (Kettle, Tempest, Rattler)', icon: 'stepCrosshair' as const, lite: false, pro: true, elite: true },
   { feature: 'Trigger Bot', icon: 'triggerBot' as const, lite: false, pro: true, elite: true },
-  { feature: 'Auto Farm Helpers', icon: 'compareAutoFarm' as const, lite: false, pro: false, elite: true },
+  { feature: 'Loot Route Assist', icon: 'compareAutoFarm' as const, lite: false, pro: false, elite: true },
   { feature: 'Full radar suite (UAV-style)', icon: 'uavRadar' as const, lite: false, pro: false, elite: true },
   { feature: 'Skin Changer (Unlock All)', icon: 'compareSkinChanger' as const, lite: false, pro: false, elite: true },
   { feature: 'Priority patch queue', icon: 'comparePriorityPatch' as const, lite: false, pro: false, elite: true },

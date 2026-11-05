@@ -4,7 +4,7 @@ import path from 'node:path';
 const root = process.cwd();
 const dist = path.join(root, 'dist');
 const key = process.env.INDEXNOW_KEY?.trim();
-const host = process.env.INDEXNOW_HOST?.trim() || 'rust-cheats.net';
+const host = process.env.INDEXNOW_HOST?.trim() || 'arcraiderhacks.com';
 
 if (!key) {
   console.log('IndexNow: skipped (INDEXNOW_KEY not set).');

@@ -1,8 +1,14 @@
 ---
 import type { ProductSlide } from '../data/products';
 import ResponsiveImage from './ResponsiveImage.astro';
-import { THUMB_IMAGE_WIDTHS } from '../utils/responsiveImage';
-import { Badge } from '@/components/starwind/badge';
+import {
+  DEFAULT_IMAGE_WIDTHS,
+  THUMB_IMAGE_WIDTHS,
+  defaultWebpSrc,
+  responsiveSrcSet,
+} from '../utils/responsiveImage';
+
+const mainSizes = '(min-width: 1024px) 640px, 100vw';
 
 interface Props {
   images: ProductSlide[];
@@ -10,19 +16,20 @@ interface Props {
 }
 
 const { images, id = 'product-screenshots' } = Astro.props;
-const hasThumbs = images.length > 1;
-const first = images[0];
+
+/** Dedupe by src so UI never shows the same file twice. */
+const slides = images.filter(
+  (slide, index, all) => all.findIndex((s) => s.src === slide.src) === index,
+);
+const first = slides[0];
+const hasPicker = slides.length > 1;
 ---
 
-<div
-  class:list={['product-gallery', !hasThumbs && 'product-gallery--single']}
-  id={id}
-  data-product-gallery
->
-  <div class="relative min-w-0 overflow-hidden rounded-xl border border-border bg-muted/20">
-    <div class="product-gallery__main cursor-zoom-in overflow-hidden">
-      {
-        first && (
+<div class="product-gallery-v2" id={id} data-product-gallery>
+  {
+    first && (
+      <div class="product-gallery-v2__stage relative overflow-hidden rounded-xl border border-border bg-muted/20">
+        <div class="product-gallery-v2__main overflow-hidden">
           <ResponsiveImage
             src={first.src}
             alt={first.alt}
@@ -30,55 +37,75 @@ const first = images[0];
             height={540}
             loading="eager"
             fetchPriority="high"
-            sizes="(min-width: 1024px) 640px, 100vw"
-            class="product-gallery__image aspect-video w-full object-cover"
+            sizes={mainSizes}
+            class="product-gallery-v2__image aspect-video w-full object-cover"
           />
-        )
-      }
-    </div>
-    <Badge
-      tone="neutral"
-      appearance="frosted"
-      size="sm"
-      class="pointer-events-none absolute bottom-3 left-3 shadow-sm"
-    >
-      Rust cheats gameplay
-    </Badge>
-  </div>
-  {
-    first && (first.caption || first.captionDesc) && (
-      <p class="mt-2 text-sm text-muted-foreground">
-        <strong class="text-foreground">{first.caption}</strong>
-        {first.captionDesc && ` — ${first.captionDesc}`}
-      </p>
+        </div>
+        {
+          hasPicker && (
+            <p
+              class="pointer-events-none absolute bottom-3 right-3 rounded-md bg-background/80 px-2 py-1 text-xs font-medium text-foreground backdrop-blur-sm"
+              data-product-gallery-counter
+            >
+              1 / {slides.length}
+            </p>
+          )
+        }
+      </div>
     )
   }
 
   {
-    hasThumbs && (
-      <div class="product-gallery__thumbs" role="tablist" aria-label="Product screenshots">
-        {images.map((img, i) => (
+    first && (
+      <div class="product-gallery-v2__meta mt-3 min-h-[3.25rem]" data-product-gallery-meta>
+        <p class="text-sm font-semibold text-foreground" data-product-gallery-caption>
+          {first.caption}
+        </p>
+        {
+          first.captionDesc && (
+            <p class="mt-1 text-sm leading-relaxed text-muted-foreground" data-product-gallery-desc>
+              {first.captionDesc}
+            </p>
+          )
+        }
+      </div>
+    )
+  }
+
+  {
+    hasPicker && (
+      <div
+        class="product-gallery-v2__picker mt-4 grid gap-2 sm:grid-cols-3"
+        role="tablist"
+        aria-label="Choose screenshot"
+      >
+        {slides.map((img, i) => (
           <button
             type="button"
-            class:list={['product-gallery__thumb', i === 0 && 'is-active']}
+            class:list={['product-gallery-v2__pick', i === 0 && 'is-active']}
             role="tab"
             aria-selected={i === 0 ? 'true' : 'false'}
-            aria-label={`Screenshot ${i + 1}`}
-            data-product-gallery-thumb
+            data-product-gallery-pick
             data-index={i}
-            data-src={img.src}
+            data-main-src={defaultWebpSrc(img.src, DEFAULT_IMAGE_WIDTHS)}
+            data-main-srcset={responsiveSrcSet(img.src, DEFAULT_IMAGE_WIDTHS)}
             data-alt={img.alt}
+            data-caption={img.caption}
+            data-desc={img.captionDesc ?? ''}
           >
-            <ResponsiveImage
-              src={img.src}
-              alt={img.alt}
-              width={320}
-              height={180}
-              widths={THUMB_IMAGE_WIDTHS}
-              loading="lazy"
-              sizes="148px"
-              class="size-full object-cover"
-            />
+            <span class="product-gallery-v2__pick-thumb">
+              <ResponsiveImage
+                src={img.src}
+                alt=""
+                width={320}
+                height={180}
+                widths={THUMB_IMAGE_WIDTHS}
+                loading="lazy"
+                sizes="120px"
+                class="size-full object-cover"
+              />
+            </span>
+            <span class="product-gallery-v2__pick-label">{img.caption}</span>
           </button>
         ))}
       </div>
@@ -92,23 +119,42 @@ const first = images[0];
       if (root.hasAttribute('data-gallery-bound')) return;
       root.setAttribute('data-gallery-bound', '');
 
-      const main = root.querySelector<HTMLImageElement>('.product-gallery__image');
-      const thumbs = root.querySelectorAll<HTMLButtonElement>('[data-product-gallery-thumb]');
-      if (!main || !thumbs.length) return;
+      const mainWrap = root.querySelector('.product-gallery-v2__main');
+      const mainSource = mainWrap?.querySelector<HTMLSourceElement>('source[type="image/webp"]');
+      const main = mainWrap?.querySelector<HTMLImageElement>('img');
+      const picks = root.querySelectorAll<HTMLButtonElement>('[data-product-gallery-pick]');
+      const captionEl = root.querySelector('[data-product-gallery-caption]');
+      const descEl = root.querySelector('[data-product-gallery-desc]');
+      const counterEl = root.querySelector('[data-product-gallery-counter]');
+      if (!main || !picks.length) return;
 
-      thumbs.forEach((thumb) => {
-        thumb.addEventListener('click', () => {
-          const alt = thumb.getAttribute('data-alt');
-          const thumbImg = thumb.querySelector('img');
-          if (thumbImg?.src) {
-            main.src = thumbImg.src;
-            if (thumbImg.srcset) main.srcset = thumbImg.srcset;
-          }
+      const total = picks.length;
+
+      const applyMainSlide = (pick: HTMLButtonElement) => {
+        const srcSet = pick.getAttribute('data-main-srcset');
+        const imgSrc = pick.getAttribute('data-main-src');
+        if (srcSet) {
+          mainSource?.setAttribute('srcset', srcSet);
+          main.srcset = srcSet;
+        }
+        if (imgSrc) main.src = imgSrc;
+      };
+
+      picks.forEach((pick, index) => {
+        pick.addEventListener('click', () => {
+          const alt = pick.getAttribute('data-alt');
+          const caption = pick.getAttribute('data-caption');
+          const desc = pick.getAttribute('data-desc');
+          applyMainSlide(pick);
           if (alt) main.alt = alt;
-          thumbs.forEach((t) => {
-            const active = t === thumb;
-            t.classList.toggle('is-active', active);
-            t.setAttribute('aria-selected', active ? 'true' : 'false');
+          if (captionEl && caption) captionEl.textContent = caption;
+          if (descEl) descEl.textContent = desc ?? '';
+          if (counterEl) counterEl.textContent = `${index + 1} / ${total}`;
+
+          picks.forEach((p) => {
+            const active = p === pick;
+            p.classList.toggle('is-active', active);
+            p.setAttribute('aria-selected', active ? 'true' : 'false');
           });
         });
       });

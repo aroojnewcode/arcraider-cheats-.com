@@ -47,31 +47,33 @@ const tagIcon: IconName = blogTagIcons[post.tag] ?? 'tag';
   data-ts={timestamp}
   data-read-minutes={readMinutes}
 >
-  <a
-    href={href}
-    class:list={[
-      'blog-card__media relative block aspect-video overflow-hidden focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-card',
-      isFeatured && 'blog-featured__media lg:aspect-auto lg:min-h-[16rem] lg:self-stretch',
-    ]}
-    tabindex="-1"
-    aria-hidden="true"
-  >
-    <ResponsiveImage
-      src={post.image}
-      alt={`${post.title} — undetected Rust cheats ESP aimbot gameplay screenshot`}
-      width={isFeatured ? 960 : 640}
-      height={isFeatured ? 540 : 360}
-      widths={isFeatured ? undefined : CARD_IMAGE_WIDTHS}
-      sizes={isFeatured ? '(min-width: 1024px) 560px, 100vw' : CARD_IMAGE_SIZES}
-      loading={eager ? 'eager' : 'lazy'}
-      fetchPriority={eager ? 'high' : undefined}
-      class:list={[
-        'size-full object-cover transition-transform duration-500 ease-out group-hover/card:scale-[1.03]',
-        isFeatured && 'lg:absolute lg:inset-0 lg:h-full lg:w-full lg:max-w-none',
-      ]}
-    />
+  {
+    post.image ? (
+      <a
+        href={href}
+        class:list={[
+          'blog-card__media relative block aspect-video overflow-hidden focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-card',
+          isFeatured && 'blog-featured__media lg:aspect-auto lg:min-h-[16rem] lg:self-stretch',
+        ]}
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <ResponsiveImage
+          src={post.image}
+          alt={`${post.title} — Arc Raiders hacks guide`}
+          width={isFeatured ? 960 : 640}
+          height={isFeatured ? 540 : 360}
+          widths={isFeatured ? undefined : CARD_IMAGE_WIDTHS}
+          sizes={isFeatured ? '(min-width: 1024px) 560px, 100vw' : CARD_IMAGE_SIZES}
+          loading={eager ? 'eager' : 'lazy'}
+          fetchPriority={eager ? 'high' : undefined}
+          class:list={[
+            'size-full object-cover transition-transform duration-500 ease-out group-hover/card:scale-[1.03]',
+            isFeatured && 'lg:absolute lg:inset-0 lg:h-full lg:w-full lg:max-w-none',
+          ]}
+        />
 
-    <div class="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-start justify-between gap-2 p-3">
+        <div class="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-start justify-between gap-2 p-3">
       <Badge
         tone="neutral"
         appearance="frosted"
@@ -100,7 +102,9 @@ const tagIcon: IconName = blogTagIcons[post.tag] ?? 'tag';
       class="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100"
       aria-hidden="true"
     />
-  </a>
+      </a>
+    ) : null
+  }
 
   <div class:list={['blog-card__body', isFeatured ? 'blog-featured__body lg:border-l lg:border-border' : 'flex min-h-0 flex-1 flex-col']}>
     <CardContent
@@ -109,6 +113,20 @@ const tagIcon: IconName = blogTagIcons[post.tag] ?? 'tag';
         isFeatured && 'justify-center border-t border-border p-5 sm:p-6 lg:border-t-0 lg:py-6 lg:pl-8 lg:pr-6',
       ]}
     >
+      {
+        !post.image ? (
+          <div class="flex flex-wrap items-center gap-2 pb-1">
+            <Badge tone="neutral" appearance="outline" size="sm" class="gap-1.5">
+              <Icon name={tagIcon} size={14} />
+              {post.tag}
+            </Badge>
+            <Badge tone="neutral" appearance="outline" size="sm" class="gap-1.5">
+              <Icon name="clock" size={14} />
+              {post.readTime}
+            </Badge>
+          </div>
+        ) : null
+      }
       <CardTitle class="text-base font-semibold normal-case leading-snug tracking-tight md:text-[1.0625rem]">
         <a
           href={href}

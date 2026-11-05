@@ -1,6 +1,6 @@
 # Deploy the static Astro output from `npm run build`.
 # Do not use @astrojs/cloudflare here — CI already builds `dist/` before `wrangler deploy`.
-name = "rust-cheats-net"
+name = "arcraider-hacks-net"
 compatibility_date = "2026-10-26"
 
 [assets]

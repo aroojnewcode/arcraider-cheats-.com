@@ -1,5 +1,5 @@
 {
-  "name": "rust-cheats",
+  "name": "arcraiderhacks",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -11,7 +11,9 @@
     "preview": "astro preview --host 0.0.0.0",
     "start": "node scripts/serve.mjs",
     "astro": "astro",
-    "optimize:images": "node scripts/optimize-images.mjs"
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "media:arc-raiders": "node scripts/fetch-arc-raiders-media.mjs && node scripts/optimize-images.mjs",
+    "brand:icons": "node scripts/make-favicon.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

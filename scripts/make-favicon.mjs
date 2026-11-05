@@ -1,8 +1,22 @@
+/**
+ * Generate favicon + logo assets from public/brand/arc-favicon-source.png
+ * Run: node scripts/make-favicon.mjs
+ */
 import sharp from 'sharp';
-import { writeFileSync, readFileSync } from 'node:fs';
+import { writeFileSync, readFileSync, mkdirSync, existsSync } from 'node:fs';
+import path from 'node:path';
 
-const src =
-  'C:/Users/3Tee System/.cursor/projects/c-Users-3Tee-System-Downloads-rust-cheats-net-main/assets/6025c64d0d4240bbacbe71e79559d882-b1d6079b-f29e-4d15-bea5-512ad7e3695f.jpg';
+const root = process.cwd();
+const defaultSrc = path.join(root, 'public/brand/arc-favicon-source.png');
+const src = process.env.BRAND_ICON_SOURCE?.trim() || defaultSrc;
+
+if (!existsSync(src)) {
+  console.error('Missing brand source:', src);
+  process.exit(1);
+}
+
+const publicDir = path.join(root, 'public');
+mkdirSync(path.join(publicDir, 'brand'), { recursive: true });
 
 const sizes = [
   ['favicon-16.png', 16],
@@ -10,11 +24,16 @@ const sizes = [
   ['apple-touch-icon.png', 180],
   ['android-chrome-192.png', 192],
   ['android-chrome-512.png', 512],
-  ['logo.png', 64],
+  ['favicon-192.png', 192],
+  ['favicon-512.png', 512],
+  ['logo.png', 128],
 ];
 
 for (const [name, size] of sizes) {
-  await sharp(src).resize(size, size, { fit: 'cover' }).png().toFile(`public/${name}`);
+  await sharp(src)
+    .resize(size, size, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 1 } })
+    .png()
+    .toFile(path.join(publicDir, name));
 }
 
 function pngToIco(pngBuffers) {
@@ -43,18 +62,39 @@ function pngToIco(pngBuffers) {
   return Buffer.concat([header, ...entries, ...pngBuffers]);
 }
 
-const p16 = await sharp(src).resize(16, 16).png().toBuffer();
-const p32 = await sharp(src).resize(32, 32).png().toBuffer();
-const p48 = await sharp(src).resize(48, 48).png().toBuffer();
-writeFileSync('public/favicon.ico', pngToIco([p16, p32, p48]));
+const p16 = await sharp(src)
+  .resize(16, 16, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 1 } })
+  .png()
+  .toBuffer();
+const p32 = await sharp(src)
+  .resize(32, 32, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 1 } })
+  .png()
+  .toBuffer();
+const p48 = await sharp(src)
+  .resize(48, 48, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 1 } })
+  .png()
+  .toBuffer();
+writeFileSync(path.join(publicDir, 'favicon.ico'), pngToIco([p16, p32, p48]));
 
-const png64 = (await sharp(src).resize(128, 128).png().toBuffer()).toString('base64');
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Rust Cheats">
-  <image href="data:image/png;base64,${png64}" width="128" height="128"/>
+const png128 = (
+  await sharp(src)
+    .resize(128, 128, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 1 } })
+    .png()
+    .toBuffer()
+).toString('base64');
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Arc Raiders Hacks">
+  <rect width="128" height="128" fill="#000"/>
+  <image href="data:image/png;base64,${png128}" width="128" height="128"/>
 </svg>
 `;
-writeFileSync('public/favicon.svg', svg);
-writeFileSync('public/logo.svg', svg);
+writeFileSync(path.join(publicDir, 'favicon.svg'), svg);
+writeFileSync(path.join(publicDir, 'logo.svg'), svg);
 
-console.log('Wrote favicon.ico bytes', readFileSync('public/favicon.ico').length);
-console.log('Wrote favicon.svg + logo.svg + png sizes');
+await sharp(src)
+  .resize(512, 512, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 1 } })
+  .jpeg({ quality: 90 })
+  .toFile(path.join(publicDir, 'arc-raiders-icon.jpg'));
+
+writeFileSync(path.join(publicDir, 'favicon.png'), readFileSync(path.join(publicDir, 'favicon-32.png')));
+
+console.log('Brand icons generated from', path.relative(root, src));

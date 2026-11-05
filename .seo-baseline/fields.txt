@@ -1,39 +1,39 @@
 === index.html ===
-Rust Cheats &amp; Hacks | ESP, Aimbot &amp; Radar
-Rust cheats for PC: player ESP, loot ESP, aimbot, no recoil, and stream-proof overlays updated every wipe at rust-cheats.net.
-https://rust-cheats.net/
+Arc Raiders Hacks | ESP, Aimbot &amp; Radar
+Arc Raiders hacks for PC: player ESP, loot ESP, aimbot, no recoil, and stream-proof overlays updated every major patch at arcraiderhacks.com.
+https://arcraiderhacks.com/
 
-=== products/rust-cheats/index.html ===
-Rust Elite Cheats &amp; Utility Products
-Elite rust cheats plus HWID spoofer, UGC tools, and Skin Changer utilities for Steam on rust-cheats.net.
-https://rust-cheats.net/products/rust-cheats/
+=== products/arcraider-hacks/index.html ===
+Arc Raiders Elite Hacks &amp; Utility Products
+Elite Arc Raiders hacks plus HWID spoofer, UGC tools, and Skin Changer utilities for PC on arcraiderhacks.com.
+https://arcraiderhacks.com/products/arcraider-hacks/
 
-=== products/rust-cheats/elite/index.html ===
-Rust Elite Cheats | Full ESP &amp; Combat Suite
-Elite tier: player ESP, loot ESP, aimbot, no recoil, farm helpers, and priority EAC patch delivery.
-https://rust-cheats.net/products/rust-cheats/elite/
+=== products/arcraider-hacks/elite/index.html ===
+Arc Raiders Elite Hacks | Full ESP &amp; Combat Suite
+Elite tier: player ESP, loot ESP, aimbot, no recoil, loot assist tools, and priority EAC patch delivery.
+https://arcraiderhacks.com/products/arcraider-hacks/elite/
 
 === blog/index.html ===
-Rust Cheats Guides &amp; Patch Notes
-Setup guides, Lite vs Pro comparisons, EAC patch checklists, and PVP config tips for rust cheats.
-https://rust-cheats.net/blog/
+Arc Raiders Hacks Guides &amp; Patch Notes
+Setup guides, Lite vs Pro comparisons, EAC patch checklists, and PVP config tips for Arc Raiders hacks.
+https://arcraiderhacks.com/blog/
 
-=== blog/rust-cheats-features-guide/index.html ===
-Rust cheats features: ESP, aimbot, radar and more | Rust Cheats
-Complete guide to our rust cheats—player ESP, loot ESP, aimbot, no recoil, FOV and stream proof.
-https://rust-cheats.net/blog/rust-cheats-features-guide/
+=== blog/arcraider-hacks-features-guide/index.html ===
+Arc Raiders hacks features: ESP, aimbot, radar and more | Arc Raiders Hacks
+Complete guide to our Arc Raiders hacks—player ESP, loot ESP, aimbot, no recoil, FOV and stream proof.
+https://arcraiderhacks.com/blog/arc-raiders-cheats-features-guide/
 
 === faq/index.html ===
-FAQ | Rust Cheats, Products &amp; Setup
-Answers on cheat tiers, ESP, aimbot, HWID tools, checkout, and blog guides at rust-cheats.net.
-https://rust-cheats.net/faq/
+FAQ | Arc Raiders Hacks, Products &amp; Setup
+Answers on hack tiers, ESP, aimbot, HWID tools, checkout, and blog guides at arcraiderhacks.com.
+https://arcraiderhacks.com/faq/
 
 === support/index.html ===
-Support | Rust Cheats
-Get help with loader setup, HWID, and checkout for Rust cheat tiers and utilities.
-https://rust-cheats.net/support/
+Support | Arc Raiders Hacks
+Get help with loader setup, HWID, and checkout for Arc Raiders hack tiers and utilities.
+https://arcraiderhacks.com/support/
 
 === 404.html ===
-Page not found | Rust Cheats
-The page you requested could not be found on rust-cheats.net.
-https://rust-cheats.net/404/
+Page not found | Arc Raiders Hacks
+The page you requested could not be found on arcraiderhacks.com.
+https://arcraiderhacks.com/404/

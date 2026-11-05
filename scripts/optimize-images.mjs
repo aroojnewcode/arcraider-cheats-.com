@@ -6,7 +6,9 @@ const root = process.cwd();
 const widths = [320, 400, 512, 640, 960];
 const dirs = [
   'public/images/gameplay',
+  'public/images/product',
   'public/images/blog',
+  'public/images/arc-raiders',
 ];
 
 async function optimizeDir(relativeDir) {

@@ -3,6 +3,7 @@ import '../../styles/forum.css';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Icon from '../../components/icons/Icon.astro';
+import BrandLogo from '../../components/BrandLogo.astro';
 import { forumCategories, forumPosts } from '../../data/forum';
 import { blogPosts, getBlogPostTimestamp } from '../../data/blog';
 import { resolvePageSeo } from '../../config/seo';
@@ -19,7 +20,7 @@ const sourceTimestamp = (path?: string) => {
 ---
 
 <BaseLayout title={seo.title} description={seo.description} jsonLd={[
-  collectionPageSchema({ name: 'Rust buyer forum', description: seo.description, url: '/forum/' }),
+  collectionPageSchema({ name: 'Arc Raiders buyer forum', description: seo.description, url: '/forum/' }),
   breadcrumbSchema(breadcrumbs),
 ]}>
   <section class="forum-page py-8 md:py-12">
@@ -31,7 +32,7 @@ const sourceTimestamp = (path?: string) => {
           <h1>Buyer Forum — ESP, Radar & Utility Q&amp;A</h1>
           <p class="forum-hero__copy">
             ESP and radar questions come first here—overlay setup, distance filters, loot markers and tier fit before checkout.
-            HWID and wipe topics are covered too; Pro aimbot modules are explained in the dedicated aimbot buy guide.
+            HWID and patch topics are covered too; Pro aimbot modules are explained in the dedicated aimbot buy guide.
           </p>
         </div>
         <a class="forum-create" href="/blog/"><Icon name="messageCircle" size={17} /> Explore the guides</a>
@@ -99,8 +100,8 @@ const sourceTimestamp = (path?: string) => {
           <section class="forum-side-card forum-about" id="community-guidelines">
             <div class="forum-side-card__banner"></div>
             <div class="forum-about__content">
-              <div class="forum-about__title"><span class="forum-community-avatar forum-community-avatar--brand"><img src="/logo.svg" alt="rust-cheats.net logo" width="34" height="34" /></span><h2>Buyer community</h2></div>
-              <p>A home for Steam PC players to compare tiers, learn setup tips, and stay wipe-ready.</p>
+              <div class="forum-about__title"><span class="forum-community-avatar forum-community-avatar--brand"><BrandLogo size={34} class="size-full object-cover" /></span><h2>Buyer community</h2></div>
+              <p>A home for PC players to compare tiers, learn setup tips, and stay patch-ready.</p>
               <div class="forum-stats"><span><b>{forumPosts.length}</b> guide discussions</span><span><b>{forumCategories.length}</b> topics</span></div>
               <a class="forum-join" href="/blog/">Explore all guides</a>
             </div>
@@ -119,7 +120,7 @@ const sourceTimestamp = (path?: string) => {
             <ol><li>Keep it friendly and constructive</li><li>Stay on topic and add context</li><li>Mark spoilers and sensitive content</li></ol>
             <a href="#community-guidelines">Read the full guidelines <Icon name="arrowRight" size={14} /></a>
           </section>
-          <p class="forum-sidebar-foot">About · Guidelines · Privacy · Terms<br />© {new Date().getFullYear()} rust-cheats.net</p>
+          <p class="forum-sidebar-foot">About · Guidelines · Privacy · Terms<br />© {new Date().getFullYear()} arcraiderhacks.com</p>
         </aside>
       </div>
     </div>

@@ -1,12 +1,13 @@
 ---
 import { t } from '../i18n';
+import BrandLogo from './BrandLogo.astro';
 import { Separator } from '@/components/starwind/separator';
 
 const resourceLinks = [
   { href: '/blog/', label: 'Blog archive', ariaLabel: 'Blog' },
   { href: '/reviews/', label: 'Buyer reviews', ariaLabel: 'Reviews' },
-  { href: '/products/rust-cheats/elite/', label: 'Elite cheats', ariaLabel: 'Elite cheats' },
-  { href: '/products/rust-cheats/', label: 'Products & utilities', ariaLabel: 'Products' },
+  { href: '/products/arcraider-hacks/elite/', label: 'Elite hacks', ariaLabel: 'Elite hacks' },
+  { href: '/products/arcraider-hacks/', label: 'Products & utilities', ariaLabel: 'Products' },
   { href: '/support/', label: t.footer.support },
 ];
 
@@ -22,8 +23,8 @@ const legalLinks = [
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
       <div class="space-y-4">
         <a href="/" class="inline-flex items-center gap-2.5 font-[family-name:var(--font-heading)] text-lg font-bold" aria-label={t.ui.homeAria}>
-          <img src="/logo.svg" alt="Rust Cheats logo" width="32" height="32" class="rounded-md" />
-          <span aria-hidden="true">Rust <span class="text-primary">Cheats</span></span>
+          <BrandLogo size={32} />
+          <span aria-hidden="true">Arc Raiders <span class="text-primary">Cheats</span></span>
         </a>
         <p class="text-sm text-muted-foreground">{t.footer.tagline}</p>
       </div>

@@ -4,18 +4,15 @@ import sitemap from '@astrojs/sitemap';
 import { sitemapSerialize } from './src/config/sitemap.ts';
 
 export default defineConfig({
-  site: 'https://rust-cheats.net',
+  site: 'https://arcraiderhacks.com',
   trailingSlash: 'always',
   redirects: {
-    '/cheats/': '/products/rust-cheats/',
-    '/cheats/lite/': '/products/rust-cheats/',
-    '/cheats/pro/': '/products/rust-cheats/',
-    '/cheats/elite/': '/products/rust-cheats/elite/',
+    '/cheats/': '/products/arcraider-hacks/',
+    '/cheats/lite/': '/products/arcraider-hacks/',
+    '/cheats/pro/': '/products/arcraider-hacks/',
+    '/cheats/elite/': '/products/arcraider-hacks/elite/',
     '/cheats/compare/': '/blog/lite-vs-pro/',
     '/contact/': '/support/',
-    '/products/dota-2-cheats/': '/products/rust-cheats/',
-    '/products/dota-2-cheats/elite/': '/products/rust-cheats/elite/',
-    '/products/dota-2-cheats/utilities/': '/products/rust-cheats/utilities/',
   },
   compressHTML: true,
   prefetch: {

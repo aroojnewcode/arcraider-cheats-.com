@@ -4,7 +4,7 @@ import path from 'node:path';
 const root = process.cwd();
 const dist = path.join(root, 'dist');
 const source = path.join(dist, 'sitemap-0.xml');
-const siteOrigin = 'https://rust-cheats.net';
+const siteOrigin = 'https://arcraiderhacks.com';
 const URLSET_NS = 'http://www.sitemaps.org/schemas/sitemap/0.9';
 
 if (!fs.existsSync(source)) {
@@ -51,7 +51,7 @@ function parseUrlBlock(block) {
 function canonicalLoc(loc) {
   const url = new URL(loc);
   url.protocol = 'https:';
-  url.hostname = 'rust-cheats.net';
+  url.hostname = 'arcraiderhacks.com';
   url.search = '';
   url.hash = '';
   let pathname = url.pathname;

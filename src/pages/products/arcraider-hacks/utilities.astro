@@ -1,0 +1,144 @@
+---
+import '../../../styles/product-cheat-page.css';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { productHub, productPages } from '../../../data/products';
+import { resolvePageSeo } from '../../../config/seo';
+import { breadcrumbSchema, itemListSchema, webPageSchema } from '../../../utils/schema';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { productPath } from '../../../utils/path';
+import { Button } from '@/components/starwind/button';
+import { Prose } from '@/components/starwind/prose';
+import SeoRelatedLinks from '../../../components/SeoRelatedLinks.astro';
+import { checkoutPath } from '../../../config/checkout';
+import { externalLinkProps } from '../../../utils/externalLink';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/starwind/card';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/starwind/table';
+
+const utilities = productPages.filter((p) => p.kind === 'utility');
+const seo = resolvePageSeo('/products/arcraider-hacks/utilities/');
+const breadcrumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Products', path: productHub.path },
+  { name: 'Compare utilities', path: '/products/arcraider-hacks/utilities/' },
+];
+
+const checkout = checkoutPath('arcRaider');
+const checkoutAttrs = externalLinkProps(checkout);
+
+const utilityUseCases: Record<string, string> = {
+  'hwid-spoofer': 'New PC or hardware flag after a ban—reset how your machine appears before a new account.',
+  ugc: 'Structured appeal and account recovery workflows when access is restricted.',
+  'unlock-all': 'Local cosmetic preview and loadouts without unlocking every Arc Raiders cosmetic locally.',
+};
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  jsonLd={[
+    webPageSchema({
+      name: 'Compare Arc Raiders utilities',
+      description: seo.description,
+      url: '/products/arcraider-hacks/utilities/',
+    }),
+    breadcrumbSchema(breadcrumbs),
+    itemListSchema(
+      utilities.map((product) => ({
+        name: product.title,
+        url: productPath(product.slug),
+      })),
+    ),
+  ]}
+>
+  <section class="py-8 md:py-12">
+    <div class="mx-auto max-w-6xl px-5">
+      <Breadcrumbs items={breadcrumbs} />
+
+      <header class="mt-6 max-w-3xl space-y-3">
+        <h1 class="text-3xl font-bold uppercase md:text-4xl">Compare Cheat Utilities — HWID Spoofer & UGC</h1>
+        <p class="text-lg text-muted-foreground">
+          Cheat utility comparison for PC—match HWID Spoofer or UGC recovery to your ban or appeal goal before checkout.
+          For Skin Changer and Unlock All, see the{' '}
+          <a href="/products/arcraider-hacks/unlock-all/" class="text-primary underline-offset-2 hover:underline">Unlock All product page</a>.
+        </p>
+      </header>
+
+      <Prose class="mt-8 max-w-none text-muted-foreground">
+        <h2>When to buy HWID Spoofer or UGC instead of a tier</h2>
+        <p>
+          HWID Spoofer helps when Easy Anti-Cheat flagged your machine. UGC tools organize appeals when Steam or server
+          access is restricted. Cosmetic previews live on the{' '}
+          <a href="/products/arcraider-hacks/unlock-all/">Unlock All / Skin Changer</a> page. Combat tiers (Lite, Pro, Elite)
+          are on the <a href={productHub.path}>products hub</a> when you need ESP or aimbot.
+        </p>
+        <h3>How checkout works</h3>
+        <p>
+          Open a utility product page for screenshots and requirements, then use Get access on that page for secure
+          checkout. Need combat modules too? Compare the <a href="/products/arcraider-hacks/elite/">Elite tier</a> or read{' '}
+          <a href="/blog/features/">the features guide</a> before you buy.
+        </p>
+      </Prose>
+
+      <div class="mt-10 rounded-lg border border-border" tabindex="0" aria-label="Utility comparison">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Utility</TableHead>
+              <TableHead>Best for</TableHead>
+              <TableHead>Product page</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {utilities.map((product) => (
+              <TableRow>
+                <TableCell class="font-medium">{product.title}</TableCell>
+                <TableCell class="text-muted-foreground">{utilityUseCases[product.slug] ?? product.desc}</TableCell>
+                <TableCell>
+                  <a href={productPath(product.slug)} class="text-primary hover:underline">
+                    View {product.category ?? 'details'}
+                  </a>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+
+      <ul class="mt-10 space-y-4">
+        {utilities.map((product) => (
+          <li>
+            <Card>
+              <CardHeader>
+                <CardTitle class="text-lg normal-case">
+                  <a href={productPath(product.slug)} class="hover:text-primary">{product.title}</a>
+                </CardTitle>
+              </CardHeader>
+              <CardContent class="space-y-2 text-sm text-muted-foreground">
+                <p>{product.desc}</p>
+                <p>
+                  <strong class="text-foreground">Includes:</strong>{' '}
+                  {product.features.slice(0, 4).join(' · ')}
+                  {product.more > 0 ? ` · +${product.more} more` : ''}
+                </p>
+              </CardContent>
+            </Card>
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-10 flex flex-wrap gap-3">
+        <Button as="a" href={checkout} variant="primary" {...checkoutAttrs}>Get access</Button>
+        <Button as="a" href={productHub.path} variant="outline">Back to products</Button>
+      </div>
+
+      <SeoRelatedLinks title="Shop Arc Raiders hacks & utilities" />
+    </div>
+  </section>
+</BaseLayout>

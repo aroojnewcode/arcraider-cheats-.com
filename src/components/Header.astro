@@ -14,6 +14,7 @@ import {
 import Icon from './icons/Icon.astro';
 import SlideRevealButton from './SlideRevealButton.astro';
 import BurgerMorphIcon from './BurgerMorphIcon.astro';
+import BrandLogo from './BrandLogo.astro';
 
 import type { IconName } from './icons/types';
 
@@ -26,7 +27,7 @@ const navIcons: Record<string, IconName> = {
   Support: 'navSupport',
 };
 
-const purchaseUrl = checkoutPath('rust');
+const purchaseUrl = checkoutPath('arcRaider');
 const purchaseLink = externalLinkProps(purchaseUrl);
 ---
 
@@ -35,8 +36,9 @@ const purchaseLink = externalLinkProps(purchaseUrl);
     <div
       class="pointer-events-auto relative flex h-14 w-full max-w-6xl items-center justify-between gap-3 rounded-2xl border border-border/40 bg-background/35 px-4 text-foreground shadow-md shadow-black/5 backdrop-blur-2xl supports-[backdrop-filter]:bg-background/25 dark:border-white/10 dark:bg-background/20 dark:shadow-black/25 sm:px-5 lg:h-[3.75rem]"
     >
-    <a href="/" class="inline-flex min-w-0 items-center font-[family-name:var(--font-heading)] text-lg font-bold tracking-wide" aria-label={t.ui.homeAria}>
-      <span class="truncate" aria-hidden="true">Rust <span class="text-primary">Cheats</span></span>
+    <a href="/" class="inline-flex min-w-0 items-center gap-2.5 font-[family-name:var(--font-heading)] text-lg font-bold tracking-wide" aria-label={t.ui.homeAria}>
+      <BrandLogo size={34} class="rounded-md shrink-0" />
+      <span class="truncate" aria-hidden="true">Arc Raiders <span class="text-primary">Cheats</span></span>
     </a>
 
     <nav class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-6 lg:flex" aria-label="Primary">
@@ -73,7 +75,10 @@ const purchaseLink = externalLinkProps(purchaseUrl);
         </SheetTrigger>
         <SheetContent side="right" class="flex w-[min(100vw-2rem,20rem)] flex-col gap-4">
           <SheetHeader>
-            <SheetTitle>{t.site.name}</SheetTitle>
+            <SheetTitle class="flex items-center gap-2">
+              <BrandLogo size={28} />
+              {t.site.name}
+            </SheetTitle>
           </SheetHeader>
           <nav class="flex flex-col gap-1" aria-label="Mobile">
             {t.nav.map((link) => (

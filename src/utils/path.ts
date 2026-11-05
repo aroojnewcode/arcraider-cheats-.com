@@ -60,7 +60,7 @@ export function blogPostPath(slug: string): string {
   return `/blog/${slug}/`;
 }
 
-/** @deprecated Use productPath — cheat tier pages live under products. */
+/** @deprecated Use productPath — hack tier pages live under products. */
 export function cheatPath(slug: string): string {
   return productPath(slug);
 }

@@ -3,6 +3,6 @@ Allow: /
 
 Disallow: /go/
 
-Sitemap: https://rust-cheats.net/sitemap-index.xml
+Sitemap: https://arcraiderhacks.com/sitemap-index.xml
 
-# RSS: https://rust-cheats.net/rss.xml
+# RSS: https://arcraiderhacks.com/rss.xml

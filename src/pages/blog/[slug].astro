@@ -50,10 +50,10 @@ function linkify(text: string): string {
       const normalized = normalizeInternalPath(href);
       return `<a href="${normalized}">${label}</a>`;
     })
-    .replace(/(https:\/\/(?:rust-cheats\.net|dotacheats\.com)[^\s.,;)]*)/g, (_match, url: string) => {
-      const path = url.replace(/^https:\/\/(?:rust-cheats\.net|dotacheats\.com)/, '');
+    .replace(/(https:\/\/(?:arcraiderhacks\.com|www\.arcraiderhacks\.com)[^\s.,;)]*)/g, (_match, url: string) => {
+      const path = url.replace(/^https:\/\/(?:www\.)?arcraiderhacks\.com/, '');
       const normalized = normalizeInternalPath(path);
-      const href = normalized.startsWith('http') ? normalized : `https://rust-cheats.net${normalized}`;
+      const href = normalized.startsWith('http') ? normalized : `https://arcraiderhacks.com${normalized}`;
       return `<a href="${href}">${url}</a>`;
     });
 }
@@ -71,7 +71,7 @@ const published = parseBlogDate(post.date);
   title={pageTitle(post.title)}
   description={post.desc}
   ogType="article"
-  ogImage={post.image}
+  ogImage={post.image ?? undefined}
   ogImageAlt={post.title}
   articlePublishedTime={published}
   articleModifiedTime={published}
@@ -96,21 +96,25 @@ const published = parseBlogDate(post.date);
         <BlogSidebar post={post} related={related} class="order-2 lg:order-1" />
 
         <div class="order-1 min-w-0 lg:order-2">
-          <figure class="blog-article__hero">
-            <ResponsiveImage
-              src={post.image}
-              alt={`${post.title} — buy undetected Rust cheats with ESP, aimbot and wallhack gameplay`}
-              width={960}
-              height={540}
-              loading="eager"
-              fetchPriority="high"
-              sizes="(min-width: 768px) 720px, 100vw"
-              class="w-full object-cover"
-            />
-            <figcaption class="sr-only">
-              Rust cheats gameplay screenshot for {post.title}. Shop Lite, Pro or Elite at rust-cheats.net.
-            </figcaption>
-          </figure>
+          {
+            post.image ? (
+              <figure class="blog-article__hero">
+                <ResponsiveImage
+                  src={post.image}
+                  alt={`${post.title} — Arc Raiders hacks guide cover`}
+                  width={960}
+                  height={540}
+                  loading="eager"
+                  fetchPriority="high"
+                  sizes="(min-width: 768px) 720px, 100vw"
+                  class="w-full object-cover"
+                />
+                <figcaption class="sr-only">
+                  Arc Raiders hacks guide cover for {post.title}. Shop Lite, Pro or Elite at arcraiderhacks.com.
+                </figcaption>
+              </figure>
+            ) : null
+          }
 
           <header class="blog-article__header">
             <h1 class="blog-article__title">{post.title}</h1>
@@ -182,7 +186,7 @@ const published = parseBlogDate(post.date);
           </Prose>
 
           <nav class="blog-article__actions" aria-label="Continue reading">
-            <Button as="a" href={checkoutPath('rust')} variant="primary" aria-label={t.ui.checkoutAria}>
+            <Button as="a" href={checkoutPath('arcRaider')} variant="primary" aria-label={t.ui.checkoutAria}>
               Get access
               <Icon name="arrowRight" size={17} />
             </Button>

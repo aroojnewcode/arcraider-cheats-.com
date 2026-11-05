@@ -1,15 +1,19 @@
-/** Checkout destinations keyed by internal product id (Zadeyo affiliate go links). */
+/** Primary Zadeyo affiliate checkout — all Get access / buy CTAs. */
+export const ARC_RAIDERS_CHECKOUT_URL =
+  'https://zadeyo.com/go/UROOJ?to=%2Fproducts%2Farc-raiders';
+
+/** Checkout destinations keyed by internal product id (same affiliate link for all buy CTAs). */
 export const CHECKOUT_URLS = {
-  rust: 'https://zadeyo.com/go/QRH?to=%2Fproducts%2Frust',
-  skinChanger: 'https://zadeyo.com/go/QRH?to=%2Fproducts%2Fskin-changer',
-  hwidSpoofer: 'https://zadeyo.com/go/QRH?to=%2Fproducts%2Fhwid-spoofer',
-  ugc: 'https://zadeyo.com/go/QRH?to=%2Fproducts%2Fugc',
+  arcRaider: ARC_RAIDERS_CHECKOUT_URL,
+  skinChanger: ARC_RAIDERS_CHECKOUT_URL,
+  hwidSpoofer: ARC_RAIDERS_CHECKOUT_URL,
+  ugc: ARC_RAIDERS_CHECKOUT_URL,
 };
 
 /** Checkout paths → external product URLs (used by Node serve + Astro middleware). */
 export const CHECKOUT_PATH_REDIRECTS = new Map([
-  ['/go/rust', CHECKOUT_URLS.rust],
-  ['/go/rust/', CHECKOUT_URLS.rust],
+  ['/go/arc-raiders', CHECKOUT_URLS.arcRaider],
+  ['/go/arc-raiders/', CHECKOUT_URLS.arcRaider],
   ['/go/skin-changer', CHECKOUT_URLS.skinChanger],
   ['/go/skin-changer/', CHECKOUT_URLS.skinChanger],
   ['/go/hwid-spoofer', CHECKOUT_URLS.hwidSpoofer],
