@@ -4,7 +4,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Icon from '../../components/icons/Icon.astro';
 import { forumPosts, getForumPost } from '../../data/forum';
-import { pageTitle } from '../../config/seo';
+import { normalizeDocumentTitle, pageTitle } from '../../config/seo';
+import { getPageSeoEntry } from '../../config/pageSeo';
 import { breadcrumbSchema, discussionForumPostingSchema } from '../../utils/schema';
 
 export function getStaticPaths() {
@@ -14,6 +15,10 @@ export function getStaticPaths() {
 const post = getForumPost(Astro.params.slug!);
 if (!post) return Astro.redirect('/forum/');
 const path = `/forum/${post.slug}/`;
+const seoEntry = getPageSeoEntry(path);
+const layoutTitle = seoEntry?.title ? normalizeDocumentTitle(seoEntry.title) : pageTitle(post.title);
+const layoutDescription = seoEntry?.description ?? post.excerpt;
+const articleH1 = seoEntry?.h1 ?? post.title;
 const breadcrumbs = [{ name: 'Home', path: '/' }, { name: 'Forum', path: '/forum/' }, { name: post.category, path: '/forum/' }, { name: post.title, path }];
 const relatedPosts = [
   ...forumPosts.filter((item) => item.slug !== post.slug && item.category === post.category),
@@ -21,7 +26,7 @@ const relatedPosts = [
 ].slice(0, 3);
 ---
 
-<BaseLayout title={pageTitle(post.title)} description={post.excerpt} jsonLd={[
+<BaseLayout title={layoutTitle} description={layoutDescription} jsonLd={[
   discussionForumPostingSchema({ name: post.title, text: post.body.join('\n\n'), url: path, author: post.author, comments: post.commentsCount }),
   breadcrumbSchema(breadcrumbs),
 ]}>
@@ -36,7 +41,7 @@ const relatedPosts = [
             </div>
             <div class="forum-detail-content">
               <div class="forum-post-meta"><span class={`forum-community-avatar tone-${post.categoryTone}`}><Icon name="users" size={15} /></span><a href="/forum/" class="forum-community-name">d/{post.category.toLowerCase().replaceAll(' ', '')}</a><span>·</span><span><Icon name="userRound" size={13} /> Arc Raiders Hacks guide team</span><span>Guide-based Q&amp;A</span></div>
-              <h1>{post.title}</h1>
+              <h1>{articleH1}</h1>
               {post.flair && <span class={`forum-flair tone-${post.categoryTone}`}>{post.flair}</span>}
               <div class="forum-detail-copy">{post.body.map((paragraph) => <p>{paragraph}</p>)}</div>
               {post.sourceTitle && <p class="forum-source forum-source--detail">Based on: <a href={post.sourcePath}>{post.sourceTitle}</a></p>}

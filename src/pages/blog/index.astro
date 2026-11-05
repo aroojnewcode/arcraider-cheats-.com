@@ -8,6 +8,7 @@ import {
 } from '../../data/blog';
 import { t } from '../../i18n';
 import { resolvePageSeo } from '../../config/seo';
+import { getPageSeoEntry } from '../../config/pageSeo';
 import { breadcrumbSchema, collectionPageSchema } from '../../utils/schema';
 import { CARD_IMAGE_WIDTHS, webpSrc } from '../../utils/responsiveImage';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -20,6 +21,7 @@ import { Button } from '@/components/starwind/button';
 import { ROUTES } from '../../utils/path';
 
 const seo = resolvePageSeo('/blog/');
+const seoEntry = getPageSeoEntry('/blog/');
 const breadcrumbs = [
   { name: 'Home', path: '/' },
   { name: 'Blog', path: '/blog/' },
@@ -54,7 +56,7 @@ const tagIcon = (tag: string): IconName => blogTagIcons[tag] ?? 'tag';
       <Breadcrumbs items={breadcrumbs} />
       <header class="section-header mt-6 max-w-2xl">
         <p class="section-header__eyebrow">{t.blog.eyebrow}</p>
-        <h1 id="blog-latest-title" class="section-header__title">{t.blog.latestTitle}</h1>
+        <h1 id="blog-latest-title" class="section-header__title">{seoEntry?.h1 ?? t.blog.latestTitle}</h1>
         <p class="section-header__subtitle">{t.blog.latestSubtitle}</p>
       </header>
       <p class="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">

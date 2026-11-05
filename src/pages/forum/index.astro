@@ -7,9 +7,11 @@ import BrandLogo from '../../components/BrandLogo.astro';
 import { forumCategories, forumPosts } from '../../data/forum';
 import { blogPosts, getBlogPostTimestamp } from '../../data/blog';
 import { resolvePageSeo } from '../../config/seo';
+import { getPageSeoEntry } from '../../config/pageSeo';
 import { breadcrumbSchema, collectionPageSchema } from '../../utils/schema';
 
 const seo = resolvePageSeo('/forum/');
+const seoEntry = getPageSeoEntry('/forum/');
 const breadcrumbs = [{ name: 'Home', path: '/' }, { name: 'Forum', path: '/forum/' }];
 const categoryKey = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '');
 const sourceTimestamp = (path?: string) => {
@@ -29,7 +31,7 @@ const sourceTimestamp = (path?: string) => {
       <header class="forum-hero">
         <div>
           <p class="section-header__eyebrow">Buyer forum</p>
-          <h1>Buyer Forum — ESP, Radar & Utility Q&amp;A</h1>
+          <h1>{seoEntry?.h1 ?? 'Buyer Forum — ESP, Radar & Utility Q&A'}</h1>
           <p class="forum-hero__copy">
             ESP and radar questions come first here—overlay setup, distance filters, loot markers and tier fit before checkout.
             HWID and patch topics are covered too; Pro aimbot modules are explained in the dedicated aimbot buy guide.

@@ -44,6 +44,24 @@ const LINK_SETS: Record<string, SeoContextLink[]> = {
     { href: '/about/', label: 'Meet arcraiderhacks store background' },
     { href: '/sitemap-blog.xml', label: 'Blog posts XML sitemap file' },
   ],
+  '/forum/': [
+    { href: '/forum/choose-tier/', label: 'Choosing Lite vs Pro tier discussion' },
+    { href: '/forum/esp-setup/', label: 'First-time ESP overlay calibration thread' },
+    { href: '/blog/buy-guide/', label: 'Written checkout buy guide article' },
+    { href: '/products/arcraider-hacks/', label: 'Live tier comparison products hub' },
+    { href: '/faq/', label: 'Pre-purchase FAQ answers index' },
+    { href: '/sitemap-forum.xml', label: 'Forum discussions XML sitemap' },
+    { href: '/sitemap-pages.xml', label: 'Static marketing pages sitemap' },
+  ],
+  '/forum/choose-tier/': [
+    { href: '/blog/buy-guide/', label: 'Source article: 2026 checkout buy guide' },
+    { href: '/blog/lite-vs-pro/', label: 'Lite versus Pro feature comparison' },
+    { href: '/products/arcraider-hacks/lite/', label: 'Lite tier product modules page' },
+    { href: '/products/arcraider-hacks/pro/', label: 'Pro tier combat modules page' },
+    { href: '/products/arcraider-hacks/elite/', label: 'Elite full-suite listing page' },
+    { href: '/forum/', label: 'Return to buyer forum index' },
+    { href: '/sitemap-forum.xml', label: 'All forum thread URLs sitemap' },
+  ],
   '/blog/aimbot/': [
     { href: '/blog/bones/', label: 'Weapon bone select profile examples' },
     { href: '/blog/lite-vs-pro/', label: 'Lite vs Pro tier comparison write-up' },
@@ -92,6 +110,35 @@ const LINK_SETS: Record<string, SeoContextLink[]> = {
   ],
 };
 
+function slugFromPath(path: string): string {
+  return path.split('/').filter(Boolean).pop() ?? '';
+}
+
+function forumContextLinks(path: string): SeoContextLink[] {
+  const slug = slugFromPath(path);
+  const label = slug.replace(/-/g, ' ');
+  return [
+    { href: '/forum/', label: 'Buyer forum Q&A hub index' },
+    { href: '/blog/buy-guide/', label: 'Checkout buy guide for all tiers' },
+    { href: '/forum/lite-pro/', label: 'Lite versus Pro differences thread' },
+    { href: '/forum/pre-install/', label: 'Pre-install checklist forum answers' },
+    { href: '/products/arcraider-hacks/', label: `Products hub related to ${label}` },
+    { href: '/sitemap-forum.xml', label: 'Forum thread XML sitemap export' },
+  ];
+}
+
+function blogContextLinks(path: string): SeoContextLink[] {
+  const slug = slugFromPath(path);
+  const label = slug.replace(/-/g, ' ');
+  return [
+    { href: '/blog/', label: 'Checkout and tier blog guides hub' },
+    { href: '/blog/buy-guide/', label: 'Dedicated checkout buy guide post' },
+    { href: '/blog/features/', label: 'Module features reference article' },
+    { href: '/products/arcraider-hacks/', label: `Tier listing for ${label} readers` },
+    { href: '/sitemap-blog.xml', label: 'Blog posts XML sitemap file' },
+  ];
+}
+
 const DEFAULT_LINKS: SeoContextLink[] = [
   { href: '/products/arcraider-hacks/', label: 'Arc Raiders hack products directory' },
   { href: '/blog/', label: 'Checkout and tier blog guides hub' },
@@ -102,5 +149,8 @@ const DEFAULT_LINKS: SeoContextLink[] = [
 
 export function getSeoContextLinks(pathname: string): SeoContextLink[] {
   const path = normalizeSeoPath(pathname);
-  return LINK_SETS[path] ?? DEFAULT_LINKS;
+  if (LINK_SETS[path]) return LINK_SETS[path];
+  if (path.startsWith('/forum/') && path !== '/forum/') return forumContextLinks(path);
+  if (path.startsWith('/blog/') && path !== '/blog/') return blogContextLinks(path);
+  return DEFAULT_LINKS;
 }

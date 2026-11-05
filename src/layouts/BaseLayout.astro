@@ -43,7 +43,7 @@ const {
   jsonLd,
 } = Astro.props;
 
-const canonical = canonicalUrl(Astro.url.pathname);
+const canonical = canonicalUrl(Astro.url.pathname, Astro.url.origin);
 const ogImageUrl = absoluteAssetUrl(ogImage);
 const robotsContent = noindex
   ? 'noindex, nofollow'
@@ -74,6 +74,7 @@ const robotsContent = noindex
     <meta name="theme-color" content="#CE422B" />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="en" href={canonical} />
+    <link rel="alternate" hreflang="en-US" href={canonical} />
     <link rel="alternate" hreflang="x-default" href={canonical} />
     <link
       rel="alternate"

@@ -42,15 +42,16 @@ function guideDiscussion(input: {
   answer: string;
   detail: string;
   tip: string;
+  extraBody?: string[];
 }): ForumPost {
-  const { answer, detail, tip, ...post } = input;
+  const { answer, detail, tip, extraBody, ...post } = input;
   return {
     ...post,
     author: 'guide_team',
     age: '2 days ago',
     commentsCount: 1,
     flair: 'Guide Q&A',
-    body: [answer, detail],
+    body: [answer, detail, ...(extraBody ?? [])],
     comments: [{ author: 'guide_team', age: 'From the guide', score: 0, body: tip }],
   };
 }
@@ -167,6 +168,10 @@ const additionalGuidePosts: ForumPost[] = [
     answer: 'The buying guide recommends comparing included features and choosing the tier that fits your needs before continuing through the official checkout.',
     detail: 'It covers the purchase flow, account access, downloading the current build, and checking setup instructions before launching the game.',
     tip: 'If you have a payment or account question, use the site support page and avoid sharing purchase details publicly.',
+    extraBody: [
+      'Lite fits awareness-only players who want player ESP, loot lines and radar without aim automation. Pro adds aimbot, no recoil and Smart Aim for busier PvPvE weeks. Elite bundles loot assist, Skin Changer and priority patch delivery when you want every module in one license.',
+      'Open the tier comparison on the products hub, confirm the live status banner, then checkout when your Windows build matches the published requirements.',
+    ],
   }),
 ];
 

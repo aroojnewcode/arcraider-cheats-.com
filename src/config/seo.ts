@@ -26,11 +26,12 @@ export function getOrganizationSameAs(): string[] {
 
 export const INDEXNOW_KEY = import.meta.env.INDEXNOW_KEY as string | undefined;
 
-export function canonicalUrl(pathname: string): string {
+export function canonicalUrl(pathname: string, origin: string = SITE_ORIGIN): string {
   let path = pathname || '/';
   if (!path.startsWith('/')) path = `/${path}`;
   if (path !== '/' && !path.endsWith('/')) path = `${path}/`;
-  return `${SITE_ORIGIN}${path}`;
+  const base = origin.replace(/\/$/, '');
+  return `${base}${path}`;
 }
 
 export function absoluteAssetUrl(path: string): string {
