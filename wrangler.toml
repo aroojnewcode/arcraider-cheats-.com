@@ -1,5 +1,6 @@
 # Static Astro site on Workers Assets. `wrangler deploy` runs [build] first (Cloudflare Workers Builds).
 name = "arcraider-hacks-net"
+main = "src/worker.js"
 compatibility_date = "2026-10-26"
 
 [build]
@@ -7,6 +8,7 @@ command = "npm ci && node scripts/cf-build.mjs"
 
 [assets]
 directory = "./dist"
+binding = "ASSETS"
 not_found_handling = "404-page"
 html_handling = "auto-trailing-slash"
 

@@ -5,12 +5,12 @@ import {
   RSS_FEED_PATH,
   TWITTER_CREATOR,
   TWITTER_SITE,
-  SITE_ORIGIN,
   canonicalUrl,
   DEFAULT_OG_IMAGE,
   DEFAULT_OG_IMAGE_HEIGHT,
   DEFAULT_OG_IMAGE_WIDTH,
   GA_MEASUREMENT_ID,
+  absoluteAssetUrl,
 } from '../config/seo';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -43,18 +43,8 @@ const {
   jsonLd,
 } = Astro.props;
 
-const requestOrigin = Astro.url.origin.replace(/\/$/, '');
-const canonical = canonicalUrl(Astro.url.pathname, requestOrigin);
-const ogImageUrl = ogImage.startsWith('http://') || ogImage.startsWith('https://')
-  ? ogImage
-  : `${requestOrigin}${ogImage.startsWith('/') ? ogImage : `/${ogImage}`}`;
-const jsonLdForRequest = jsonLd
-  ? JSON.parse(
-      JSON.stringify(jsonLd)
-        .replaceAll(SITE_ORIGIN, requestOrigin)
-        .replaceAll(`https://${t.site.domain}`, requestOrigin),
-    )
-  : undefined;
+const canonical = canonicalUrl(Astro.url.pathname, Astro.url.origin);
+const ogImageUrl = absoluteAssetUrl(ogImage);
 const robotsContent = noindex
   ? 'noindex, nofollow'
   : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
@@ -150,7 +140,7 @@ const robotsContent = noindex
       />
     </noscript>
 
-    {jsonLdForRequest && <JsonLd data={jsonLdForRequest} />}
+    {jsonLd && <JsonLd data={jsonLd} />}
     <slot name="head" />
 
   </head>

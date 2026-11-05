@@ -4,5 +4,6 @@ Allow: /
 Disallow: /go/
 
 Sitemap: https://arcraiderhacks.com/sitemap-index.xml
+Sitemap: https://arcraider-cheats--com.uroojroziroti.workers.dev/sitemap-index.xml
 
 # RSS: https://arcraiderhacks.com/rss.xml

@@ -14,7 +14,9 @@ const LINK_SETS: Record<string, SeoContextLink[]> = {
     { href: '/blog/features/', label: 'Tier features module reference' },
     { href: '/forum/choose-tier/', label: 'Forum thread: choosing Lite vs Pro' },
     { href: '/sitemap.xml', label: 'XML sitemap index for crawlers' },
+    { href: '/sitemap-pages.xml', label: 'Static pages XML sitemap listing' },
     { href: '/sitemap-blog.xml', label: 'Blog articles XML sitemap file' },
+    { href: '/sitemap-forum.xml', label: 'Forum threads XML sitemap listing' },
   ],
   '/faq/': [
     { href: '/about/', label: 'About arcraiderhacks storefront page' },
@@ -24,6 +26,7 @@ const LINK_SETS: Record<string, SeoContextLink[]> = {
     { href: '/support/', label: 'Discord loader support tickets' },
     { href: '/forum/eac-init/', label: 'Forum thread: EAC initialize errors' },
     { href: '/sitemap.xml', label: 'Full site XML sitemap index' },
+    { href: '/sitemap-pages.xml', label: 'Help-center pages XML sitemap file' },
     { href: '/sitemap-forum.xml', label: 'Forum threads XML sitemap file' },
   ],
   '/about/': [
@@ -42,6 +45,7 @@ const LINK_SETS: Record<string, SeoContextLink[]> = {
     { href: '/products/arcraider-hacks/elite/', label: 'Elite full-suite product listing' },
     { href: '/forum/pre-install/', label: 'Forum thread: pre-install checklist' },
     { href: '/about/', label: 'Meet arcraiderhacks store background' },
+    { href: '/sitemap-pages.xml', label: 'Marketing pages XML sitemap listing' },
     { href: '/sitemap-blog.xml', label: 'Blog posts XML sitemap file' },
   ],
   '/forum/': [
