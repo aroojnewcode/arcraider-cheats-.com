@@ -151,17 +151,19 @@ const tagIcon: IconName = blogTagIcons[post.tag] ?? 'tag';
     <CardFooter class="blog-card__footer mt-auto rounded-none border-border/80 bg-transparent px-4 pb-6 pt-4 shadow-none sm:px-5 sm:pb-6">
       <p class="blog-card__footer-meta text-sm text-muted-foreground">
         {
-          /* Date already shows on the image when showDate is set — keep footer to one clean row */
+          /* Home cards: read time on the cover — footer shows date only. Blog index: date on cover — footer shows read time. */
           !showDate ? (
             <>
               <Icon name="calendar" size={14} class="blog-card__footer-icon" aria-hidden="true" />
               <span>{post.date}</span>
-              <span class="blog-card__footer-dot" aria-hidden="true">·</span>
             </>
-          ) : null
+          ) : (
+            <>
+              <Icon name="clock" size={14} class="blog-card__footer-icon" aria-hidden="true" />
+              <span>{post.readTime}</span>
+            </>
+          )
         }
-        <Icon name="clock" size={14} class="blog-card__footer-icon" aria-hidden="true" />
-        <span>{post.readTime}</span>
       </p>
       <Button as="a" href={href} variant="outline" size="sm" class="blog-card__read shrink-0">
         {readCtaLabel}
