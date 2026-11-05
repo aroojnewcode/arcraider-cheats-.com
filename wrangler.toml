@@ -1,22 +1,15 @@
-# Static Astro site on Workers Assets. `wrangler deploy` runs [build] first (Cloudflare Workers Builds).
-name = "arcraider-hacks-net"
+# Static Astro site on Workers Assets. Cloudflare Builds runs `npx wrangler deploy`.
+# Worker name must match the CI script: arcraider-cheats--com.
+name = "arcraider-cheats--com"
 main = "src/worker.js"
 compatibility_date = "2026-10-26"
+workers_dev = true
 
 [build]
-command = "npm ci && node scripts/cf-build.mjs"
+command = "node scripts/cf-build.mjs"
 
 [assets]
 directory = "./dist"
 binding = "ASSETS"
 not_found_handling = "404-page"
 html_handling = "auto-trailing-slash"
-
-# Serve the same Worker on the production host so sitemap-*.xml returns 200 with XML.
-[[routes]]
-pattern = "arcraiderhacks.com"
-custom_domain = true
-
-[[routes]]
-pattern = "www.arcraiderhacks.com"
-custom_domain = true
