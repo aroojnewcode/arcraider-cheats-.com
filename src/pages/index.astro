@@ -5,16 +5,13 @@ import FeaturesSection from '../components/FeaturesSection.astro';
 import WhySetupSection from '../components/WhySetupSection.astro';
 import ProductsSection from '../components/ProductsSection.astro';
 import ContentSections from '../components/ContentSections.astro';
-import { t } from '../i18n';
 import { resolvePageSeo } from '../config/seo';
-import { getPageSeoEntry } from '../config/pageSeo';
 import { faqPageSchema, organizationSchema, websiteSchema } from '../utils/schema';
 import { getLandingFaqs } from '../data/faq';
 import { PRIMARY_HERO_IMAGE } from '../config/media';
 import { webpSrc } from '../utils/responsiveImage';
 
 const seo = resolvePageSeo('/');
-const homeSeo = getPageSeoEntry('/');
 const homeFaqs = getLandingFaqs();
 const heroLcpImage = webpSrc(PRIMARY_HERO_IMAGE, 512);
 ---
@@ -33,7 +30,7 @@ const heroLcpImage = webpSrc(PRIMARY_HERO_IMAGE, 512);
     media="(min-width: 1024px)"
     fetchpriority="high"
   />
-  <HeroSection heroTitle={homeSeo?.h1} />
+  <HeroSection heroTitle="Arc Raiders Hacks" />
   <FeaturesSection />
   <ProductsSection />
   <WhySetupSection />

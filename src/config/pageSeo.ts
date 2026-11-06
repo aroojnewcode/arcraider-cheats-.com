@@ -14,7 +14,7 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
     title: 'Buy Arc Raiders Hacks 2026 | Undetected ESP & Aimbot',
     description:
       'Shop undetected Arc Raiders hacks for PC—player ESP, loot ESP, soft aim, no recoil and stream-proof overlays. Compare Lite, Pro and Elite.',
-    h1: 'Arc Raiders Hacks 2026 — Undetected ESP, Aimbot & Wallhacks for PC',
+    h1: 'Arc Raiders Hacks',
   },
   '/products/arcraider-hacks/': {
     title: 'All Arc Raiders Hack Products | Lite, Pro, Elite Hub',

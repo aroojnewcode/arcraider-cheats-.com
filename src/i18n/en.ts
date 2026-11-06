@@ -24,7 +24,7 @@ export const en: Translations = {
   hero: {
     status: 'Arc Raiders — EAC build online',
     eyebrow: 'Undetected Arc Raiders Hacks',
-    title: 'Arc Raiders Hacks — Undetected ESP, Aimbot & Wallhacks for PC',
+    title: 'Arc Raiders Hacks',
     subtitle:
       'Buy undetected Arc Raiders hacks for PC—player ESP, loot ESP, soft aim and no recoil. Compare Lite, Pro and Elite, then checkout for instant loader access.',
     ctaPrimary: 'Get access',
