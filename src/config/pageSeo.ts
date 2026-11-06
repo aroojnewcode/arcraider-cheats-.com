@@ -29,7 +29,7 @@ export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/products/arcraider-hacks/hwid-spoofer/': {
     title: 'Arc Raiders HWID Spoofer for Sale | Reset After EAC Ban',
     description:
-      'Buy a Arc Raiders HWID spoofer to rotate disk, MAC and GPU IDs after an Easy Anti-Cheat hardware flag. Portal setup guide and Discord support included.',
+      'Buy an Arc Raiders HWID spoofer to rotate disk, MAC and GPU IDs after an Easy Anti-Cheat hardware flag. Portal setup guide and Discord support included.',
   },
   '/products/arcraider-hacks/ugc/': {
     title: 'Arc Raiders UGC Recovery Tool | Steam & Ban Appeals',

@@ -3,14 +3,29 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname.replace(/\/$/, '') || '/';
+
+    if (path === '/robots.txt') {
+      const origin = `${url.protocol}//${url.host}`;
+      const body = `User-agent: *
+Allow: /
+
+Disallow: /go/
+
+Sitemap: ${origin}/sitemap-index.xml
+`;
+      return new Response(body, {
+        status: 200,
+        headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+      });
+    }
+
     const isSitemap =
       path === '/sitemap.xml' ||
       path === '/sitemap-index.xml' ||
       path === '/sitemap-pages.xml' ||
       path === '/sitemap-blog.xml' ||
       path === '/sitemap-forum.xml' ||
-      path === '/sitemap-0.xml' ||
-      path === '/robots.txt';
+      path === '/sitemap-0.xml';
 
     if (isSitemap) {
       const assetUrl = new URL(request.url);

@@ -271,7 +271,7 @@ export const en: Translations = {
         category: 'Account recovery',
         title: 'Arc Raiders UGC — Steam & EAC Account Recovery',
         subtitle: 'Appeals for banned Arc Raiders accounts',
-        desc: 'Buy Arc Raiders UGC recovery tools for platform holds, EAC bans and platform and anti-cheat restrictions—custom appeal workflows, case docs and status tracking.',
+        desc: 'Buy Arc Raiders UGC recovery tools for platform holds, EAC bans, and platform or anti-cheat restrictions—custom appeal workflows, case docs and status tracking.',
         features: ['Custom appeal workflows', 'Dispute automation', 'Case documentation', 'Status tracking dashboard'],
         more: 6,
         href: `${productBase}ugc/`,
@@ -486,7 +486,7 @@ export const en: Translations = {
     badge: '4 easy steps',
     titleBefore: 'From status check to',
     titleHighlight: 'saved profile.',
-    subtitle: 'A straight path from purchase to a Arc Raiders profile you can reuse every session.',
+    subtitle: 'A straight path from purchase to an Arc Raiders profile you can reuse every session.',
     ctaLabel: 'Shop products',
     ctaHref: productBase,
     ctaSecondary: 'Pre-purchase FAQ',
@@ -611,7 +611,7 @@ export const en: Translations = {
           heading: 'Who we are',
           paragraphs: [
             'Arc Raiders Hacks (arcraiderhacks.com) is a buyer-focused storefront for undetected Arc Raiders tools on PC. We publish tier comparisons, setup guides, and honest risk notes so you know what you are purchasing before checkout—not vague marketing copy.',
-            'We are not Embark Studios Studios and we are not affiliated with Easy Anti-Cheat. Arc Raiders is a trademark of Embark Studios Studios. Product names on this site describe software categories (ESP, aimbot, utilities), not official game features.',
+            'We are not Embark Studios and we are not affiliated with Easy Anti-Cheat. Arc Raiders is a trademark of Embark Studios. Product names on this site describe software categories (ESP, aimbot, utilities), not official game features.',
           ],
         },
         {
@@ -798,7 +798,7 @@ export const en: Translations = {
         {
           heading: 'Before you open a ticket',
           paragraphs: [
-            'Check the live status banner on the homepage and in Discord #status—especially after a Arc Raiders update or EAC patch. If status is offline, wait for the new build instead of forcing an old loader.',
+            'Check the live status banner on the homepage and in Discord #status—especially after an Arc Raiders update or EAC patch. If status is offline, wait for the new build instead of forcing an old loader.',
             'Download the loader only from your operator portal (linked in your order email). Do not run files from DMs, YouTube links, or forum attachments.',
             'Have your checkout order ID, Windows version (10 or 11), Arc Raiders build, and a screenshot of the exact error ready. Redact unrelated personal info from screenshots when possible.',
           ],

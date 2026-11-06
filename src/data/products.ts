@@ -102,7 +102,7 @@ const defaultAcquisitionSteps: AcquisitionStep[] = [
   {
     num: '01',
     title: 'Review current status',
-    desc: 'Check the live status banner on arcraiderhacks.com and Discord #status before purchase—especially after a Arc Raiders patch day update or an EAC patch.',
+    desc: 'Check the live status banner on arcraiderhacks.com and Discord #status before purchase—especially after an Arc Raiders patch day update or an EAC patch.',
   },
   {
     num: '02',

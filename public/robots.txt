@@ -3,6 +3,4 @@ Allow: /
 
 Disallow: /go/
 
-Sitemap: https://arcraider-cheats--com.uroojroziroti.workers.dev/sitemap-index.xml
-
-# RSS: https://arcraider-cheats--com.uroojroziroti.workers.dev/rss.xml
+Sitemap: https://arcraiderhacks.com/sitemap-index.xml

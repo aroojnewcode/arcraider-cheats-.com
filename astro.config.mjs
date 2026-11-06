@@ -3,9 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { sitemapSerialize } from './src/config/sitemap.ts';
 
-const siteOrigin = (
-  process.env.SITE_ORIGIN || 'https://arcraider-cheats--com.uroojroziroti.workers.dev'
-).replace(/\/$/, '');
+const siteOrigin = (process.env.SITE_ORIGIN || 'https://arcraiderhacks.com').replace(/\/$/, '');
 
 export default defineConfig({
   site: siteOrigin,
