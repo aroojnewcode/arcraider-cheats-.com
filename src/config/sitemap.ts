@@ -1,11 +1,21 @@
 import type { SitemapItem } from '@astrojs/sitemap';
 import { blogPosts } from '../data/blog';
+import { forumPosts } from '../data/forum';
 import { parseBlogDate } from '../utils/schema';
 
 const buildDate = new Date().toISOString().slice(0, 10);
 
 const blogLastmod = new Map(
   blogPosts.map((post) => [`/blog/${post.slug}/`, parseBlogDate(post.date)] as const),
+);
+
+const forumLastmod = new Map(
+  forumPosts.map((post) => {
+    const sourceSlug = post.sourcePath?.split('/').filter(Boolean).at(-1);
+    const sourceArticle = sourceSlug ? blogPosts.find((item) => item.slug === sourceSlug) : undefined;
+    const lastmod = sourceArticle ? parseBlogDate(sourceArticle.date) : buildDate;
+    return [`/forum/${post.slug}/`, lastmod] as const;
+  }),
 );
 
 function pathnameFromUrl(url: string): string {
@@ -42,13 +52,18 @@ export function sitemapSerialize(item: SitemapItem): SitemapItem | undefined {
 
   if (path === '/forum/') {
     item.priority = 0.8;
-    item.changefreq = 'daily';
+    item.changefreq = 'weekly';
+    const forumDates = [...forumLastmod.values()].filter(Boolean).sort();
+    if (forumDates.length > 0) {
+      item.lastmod = forumDates.at(-1) ?? buildDate;
+    }
     return item;
   }
 
   if (path.startsWith('/forum/')) {
     item.priority = 0.6;
-    item.changefreq = 'weekly';
+    item.changefreq = 'monthly';
+    item.lastmod = forumLastmod.get(path) ?? buildDate;
     return item;
   }
 

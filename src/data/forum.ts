@@ -133,7 +133,7 @@ const additionalGuidePosts: ForumPost[] = [
     slug: 'ext-loader', title: 'What does an External cheat loader mean?', upvotes: 46,
     excerpt: 'External cheat loader explained: separate process, overlay UI, portal updates vs risky injectors.',
     category: 'General', categoryTone: 'purple', sourceTitle: 'Arc Raiders external cheat guide', sourcePath: '/blog/external/',
-    answer: 'The article uses â€œexternalâ€ to describe software that runs separately from the game process and presents its interface as an overlay.',
+    answer: 'The article uses “external” to describe software that runs separately from the game process and presents its interface as an overlay.',
     detail: 'It discusses the architecture at a high level and explains setup, patch updates, and the differences described between external and internal tools.',
     tip: 'Check compatibility and current status information whenever the game or EAC receives an update.',
   }),

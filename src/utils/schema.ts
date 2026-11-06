@@ -40,7 +40,7 @@ export function organizationSchema() {
     '@type': 'Organization',
     name: 'Arc Raiders Hacks',
     url: `${SITE_ORIGIN}/`,
-    logo: `${SITE_URL}${SITE_LOGO}`,
+    logo: absoluteAssetUrl(SITE_LOGO),
     email: SUPPORT_EMAIL,
     ...(sameAs.length > 0 ? { sameAs } : {}),
     contactPoint: [
@@ -216,7 +216,7 @@ export function articleSchema(input: {
       name: 'Arc Raiders Hacks',
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_URL}${SITE_LOGO}`,
+        url: absoluteAssetUrl(SITE_LOGO),
       },
     },
     mainEntityOfPage: {

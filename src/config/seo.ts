@@ -1,6 +1,6 @@
 import { t } from '../i18n';
 import { PRIMARY_HERO_IMAGE } from './media';
-import { SITE_DOMAIN as INDEXNOW_HOST_NAME } from './site';
+import { DISCORD_URL, SITE_DOMAIN as INDEXNOW_HOST_NAME } from './site';
 import { getPageSeoEntry } from './pageSeo';
 
 /** Matches `site` in astro.config so JSON-LD URLs align with `<link rel="canonical">`. */
@@ -10,6 +10,8 @@ export const SITE_ORIGIN = String(import.meta.env.SITE || `https://${t.site.doma
 );
 
 export const DEFAULT_OG_IMAGE = PRIMARY_HERO_IMAGE;
+export const DEFAULT_OG_IMAGE_WIDTH = 960;
+export const DEFAULT_OG_IMAGE_HEIGHT = 540;
 
 export const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID as string | undefined;
 
@@ -21,11 +23,12 @@ export const TWITTER_CREATOR = import.meta.env.PUBLIC_TWITTER_CREATOR as string 
 /** Comma-separated profile URLs (X, YouTube, etc.) for Organization sameAs. */
 export function getOrganizationSameAs(): string[] {
   const raw = import.meta.env.PUBLIC_ORG_SAME_AS as string | undefined;
-  if (!raw?.trim()) return [];
-  return raw
-    .split(',')
+  const fromEnv = raw
+    ?.split(',')
     .map((entry) => entry.trim())
     .filter(Boolean);
+  if (fromEnv?.length) return fromEnv;
+  return DISCORD_URL ? [DISCORD_URL] : [];
 }
 
 export const INDEXNOW_KEY = import.meta.env.INDEXNOW_KEY as string | undefined;
@@ -81,9 +84,6 @@ export function pageTitle(keyword: string, brand = t.site.name): string {
   const trimmed = keyword.slice(0, Math.max(20, max - suffix.length - 1)).trim();
   return `${trimmed}${suffix}`;
 }
-
-export const DEFAULT_OG_IMAGE_WIDTH = 1200;
-export const DEFAULT_OG_IMAGE_HEIGHT = 630;
 
 export const RSS_FEED_PATH = '/rss.xml';
 

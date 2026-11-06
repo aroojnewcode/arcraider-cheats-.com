@@ -2,6 +2,7 @@
 import '../styles/reviews.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { resolvePageSeo, canonicalUrl } from '../config/seo';
+import { getPageSeoEntry } from '../config/pageSeo';
 import { breadcrumbSchema, collectionPageSchema } from '../utils/schema';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Icon from '../components/icons/Icon.astro';
@@ -10,6 +11,7 @@ import { ROUTES } from '../utils/path';
 import { reviews, getReviewStats, getRatingBreakdown, getReviewProducts } from '../data/reviews';
 
 const seo = resolvePageSeo('/reviews/');
+const seoEntry = getPageSeoEntry('/reviews/');
 const breadcrumbs = [
   { name: 'Home', path: '/' },
   { name: 'Reviews', path: '/reviews/' },
@@ -78,7 +80,7 @@ const reviewSchema = {
           <div class="reviews-hero__copy">
             <p class="section-header__eyebrow">Verified buyer signal</p>
             <h1 id="reviews-page-title" class="section-header__title">
-              Arc Raiders Hacks Reviews — ESP, Aimbot & Spoofer
+              {seoEntry?.h1 ?? 'Arc Raiders Hacks Reviews — ESP, Aimbot & Spoofer'}
             </h1>
             <p class="section-header__subtitle mt-3 max-w-xl">
               Real purchase feedback on Elite combat tools, HWID Spoofer, UGC recovery and Skin Changer—before you checkout.

@@ -30,6 +30,9 @@ if (uniqueUrls.length === 0) {
 
 const keyFile = path.join(dist, `${key}.txt`);
 fs.writeFileSync(keyFile, key, 'utf8');
+const publicDir = path.join(root, 'public');
+fs.mkdirSync(publicDir, { recursive: true });
+fs.writeFileSync(path.join(publicDir, `${key}.txt`), key, 'utf8');
 
 const payload = {
   host,

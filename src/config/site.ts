@@ -1,5 +1,7 @@
 export const SITE_DOMAIN = 'arcraiderhacks.com';
+/** Canonical HTTPS origin for sitemaps, IndexNow, and Search Console — must match the live Worker custom domain. */
 export const SITE_URL = `https://${SITE_DOMAIN}`;
+export const CANONICAL_SITE_ORIGIN = SITE_URL;
 /** Site mark (favicon + header/footer). Regenerate: npm run brand:icons */
 export const SITE_LOGO = '/logo.svg';
 export const PRODUCT_BASE = '/products/arcraider-hacks/';
