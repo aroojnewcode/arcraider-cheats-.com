@@ -43,7 +43,7 @@ const {
   jsonLd,
 } = Astro.props;
 
-const canonical = canonicalUrl(Astro.url.pathname, Astro.url.origin);
+const canonical = canonicalUrl(Astro.url.pathname);
 const ogImageUrl = absoluteAssetUrl(ogImage);
 const robotsContent = noindex
   ? 'noindex, nofollow'

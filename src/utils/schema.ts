@@ -1,5 +1,6 @@
 import type { FaqItem } from '../i18n/types';
 import { SITE_LOGO, SITE_URL, SUPPORT_EMAIL } from '../config/site';
+import { getProductPlans } from '../data/productPricing';
 import { SITE_ORIGIN, absoluteAssetUrl, canonicalUrl, getOrganizationSameAs } from '../config/seo';
 
 export interface BreadcrumbItem {
@@ -147,28 +148,53 @@ export function productSchema(input: {
   offerUrl: string;
   image?: string;
   sku?: string;
+  productSlug?: string;
 }) {
+  const checkout = offerUrl(input.offerUrl);
+  const seller = {
+    '@type': 'Organization' as const,
+    name: 'Arc Raiders Hacks',
+  };
+  const plans = input.productSlug ? getProductPlans(input.productSlug) : [];
+  const pricedOffers =
+    plans.length > 0
+      ? {
+          '@type': 'AggregateOffer' as const,
+          priceCurrency: 'USD',
+          lowPrice: String(Math.min(...plans.map((p) => p.priceUsd))),
+          highPrice: String(Math.max(...plans.map((p) => p.priceUsd))),
+          offerCount: plans.length,
+          offers: plans.map((plan) => ({
+            '@type': 'Offer' as const,
+            name: plan.label,
+            price: String(plan.priceUsd),
+            priceCurrency: 'USD',
+            url: checkout,
+            availability: 'https://schema.org/InStock',
+            seller,
+          })),
+        }
+      : {
+          '@type': 'Offer' as const,
+          url: checkout,
+          priceCurrency: 'USD',
+          availability: 'https://schema.org/InStock',
+          seller,
+        };
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: input.name,
     description: input.description,
+    url: canonicalUrl(input.url),
     sku: input.sku ?? input.url.replace(/\//g, '-'),
     brand: {
       '@type': 'Brand',
       name: 'Arc Raiders Hacks',
     },
     ...(input.image ? { image: absoluteAssetUrl(input.image) } : {}),
-    offers: {
-      '@type': 'Offer',
-      url: offerUrl(input.offerUrl),
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-      seller: {
-        '@type': 'Organization',
-        name: 'Arc Raiders Hacks',
-      },
-    },
+    offers: pricedOffers,
   };
 }
 

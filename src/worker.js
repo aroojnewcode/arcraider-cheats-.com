@@ -1,17 +1,42 @@
+import { resolvePathRedirect } from '../scripts/redirects.mjs';
+import { resolveCheckoutPathRedirect } from './config/checkout-redirects.mjs';
+
+/** Must match SITE_ORIGIN / sitemap finalize host (docs/SEO-DEPLOY.md). */
+const CANONICAL_ORIGIN = 'https://arcraiderhacks.com';
+
+function redirectResponse(target, status = 301) {
+  return new Response(null, {
+    status,
+    headers: { Location: target },
+  });
+}
+
 /** Serve sitemap XML with a real application/xml content-type on every host. */
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const path = url.pathname.replace(/\/$/, '') || '/';
+    const pathname = url.pathname;
+
+    const checkoutRedirect = resolveCheckoutPathRedirect(pathname);
+    if (checkoutRedirect) {
+      return redirectResponse(new URL(checkoutRedirect, url).href, 302);
+    }
+
+    const pathRedirect = resolvePathRedirect(pathname);
+    if (pathRedirect) {
+      const destination = `${pathRedirect}${url.search}${url.hash}`;
+      return redirectResponse(new URL(destination, url).href, 301);
+    }
+
+    const path = pathname.replace(/\/$/, '') || '/';
 
     if (path === '/robots.txt') {
-      const origin = `${url.protocol}//${url.host}`;
       const body = `User-agent: *
 Allow: /
 
 Disallow: /go/
 
-Sitemap: ${origin}/sitemap-index.xml
+Sitemap: ${CANONICAL_ORIGIN}/sitemap-index.xml
 `;
       return new Response(body, {
         status: 200,

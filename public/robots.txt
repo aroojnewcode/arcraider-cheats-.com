@@ -3,4 +3,5 @@ Allow: /
 
 Disallow: /go/
 
+# Production sitemap host — Worker serves the same canonical URL on all hosts.
 Sitemap: https://arcraiderhacks.com/sitemap-index.xml

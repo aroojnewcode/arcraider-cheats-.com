@@ -11,6 +11,8 @@ Production canonical origin is **`https://arcraiderhacks.com`** (`src/config/sit
 
 Builds set `SITE_ORIGIN` and `SITEMAP_ORIGIN` to arcraiderhacks.com so sitemap `<loc>` values match HTML `<link rel="canonical">` on the custom domain.
 
+`src/worker.js` applies the same **301** rules as `scripts/redirects.mjs` (legacy blog/forum slugs, trailing slashes) before serving static assets. `/robots.txt` always advertises `https://arcraiderhacks.com/sitemap-index.xml`, matching the built sitemap files.
+
 ## IndexNow
 
 Set `INDEXNOW_KEY` in CI/Cloudflare build env. The postbuild script writes `dist/<key>.txt` and copies it to `public/` for verification.
