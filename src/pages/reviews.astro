@@ -1,9 +1,9 @@
 ---
 import '../styles/reviews.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { resolvePageSeo, canonicalUrl } from '../config/seo';
+import { resolvePageSeo } from '../config/seo';
 import { getPageSeoEntry } from '../config/pageSeo';
-import { breadcrumbSchema, collectionPageSchema } from '../utils/schema';
+import { breadcrumbSchema, collectionPageSchema, reviewsListSchema } from '../utils/schema';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Icon from '../components/icons/Icon.astro';
 import { Button } from '@/components/starwind/button';
@@ -29,34 +29,6 @@ const initials = (name: string) =>
     .slice(0, 2)
     .toUpperCase();
 
-const reviewSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Product',
-  name: 'Arc Raiders Hacks',
-  description: seo.description,
-  brand: { '@type': 'Brand', name: 'Arc Raiders Hacks' },
-  url: canonicalUrl('/reviews/'),
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: String(stats.average),
-    reviewCount: String(stats.count),
-    bestRating: '5',
-    worstRating: '1',
-  },
-  review: reviews.map((r) => ({
-    '@type': 'Review',
-    author: { '@type': 'Person', name: r.name },
-    datePublished: new Date(r.date).toISOString().slice(0, 10),
-    reviewBody: r.body,
-    name: r.title,
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: String(r.rating),
-      bestRating: '5',
-      worstRating: '1',
-    },
-  })),
-};
 ---
 
 <BaseLayout
@@ -69,7 +41,18 @@ const reviewSchema = {
       url: '/reviews/',
     }),
     breadcrumbSchema(breadcrumbs),
-    reviewSchema,
+    reviewsListSchema({
+      pageUrl: '/reviews/',
+      pageName: seoEntry?.h1 ?? 'Arc Raiders Hacks Customer Reviews',
+      description: seo.description,
+      reviews: reviews.map((r) => ({
+        name: r.name,
+        title: r.title,
+        body: r.body,
+        date: r.date,
+        rating: r.rating,
+      })),
+    }),
   ]}
 >
   <div class="reviews-page">

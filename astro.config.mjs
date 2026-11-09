@@ -10,8 +10,8 @@ export default defineConfig({
   trailingSlash: 'always',
   redirects: {
     '/cheats/': '/products/arcraider-hacks/',
-    '/cheats/lite/': '/products/arcraider-hacks/',
-    '/cheats/pro/': '/products/arcraider-hacks/',
+    '/cheats/lite/': '/products/arcraider-hacks/lite/',
+    '/cheats/pro/': '/products/arcraider-hacks/pro/',
     '/cheats/elite/': '/products/arcraider-hacks/elite/',
     '/cheats/compare/': '/blog/lite-vs-pro/',
     '/contact/': '/support/',

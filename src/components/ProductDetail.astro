@@ -18,9 +18,10 @@ import ProductRelatedGuidesSection from './product/ProductRelatedGuidesSection.a
 interface Props {
   product: ProductPage;
   breadcrumbs?: BreadcrumbItem[];
+  pageH1?: string;
 }
 
-const { product, breadcrumbs } = Astro.props;
+const { product, breadcrumbs, pageH1 } = Astro.props;
 const productFaqs = getProductFaqs(product.slug, product.kind);
 const relatedPosts = getRelatedBlogPostsForProduct(product.relatedBlogSlugs, 6);
 
@@ -39,7 +40,7 @@ const showDescToggle = descriptionBlocks.length > 2;
     {breadcrumbs && <Breadcrumbs items={breadcrumbs} class="product-detail__breadcrumbs" />}
 
     <div class="mt-6">
-      <ProductDetailHeader product={product} />
+      <ProductDetailHeader product={product} pageH1={pageH1} />
     </div>
 
     <div class="product-detail-hero__grid mt-10 grid items-start gap-8">

@@ -26,16 +26,19 @@ const CORE_PAGE_SEO: Record<string, PageSeoEntry> = {
     title: 'Arc Raiders Lite Hacks for Sale | ESP, Radar & FOV',
     description:
       'Purchase Lite tier: player ESP, loot ESP, radar and FOV hack without aimbot—low-profile awareness tools with stream-proof overlay on PC.',
+    h1: 'Arc Raiders Lite hacks — ESP, radar & FOV',
   },
   '/products/arcraider-hacks/pro/': {
     title: 'Arc Raiders Pro Hacks for Sale | ESP, Aimbot & Recoil',
     description:
       'Purchase Pro tier: every Lite module plus aimbot, Soft Aim, bone select and no recoil—combat-ready Arc Raiders hacks with secure checkout.',
+    h1: 'Arc Raiders Pro hacks — ESP plus aimbot & recoil',
   },
   '/products/arcraider-hacks/elite/': {
     title: 'Arc Raiders Elite Hacks for Sale | Full ESP Suite',
     description:
       'Purchase Elite tier: skeleton ESP, aimbot, no recoil, loot route assist, Skin Changer and priority EAC patch queue for Surface and underground raids.',
+    h1: 'Arc Raiders Elite hacks — full ESP & loot suite',
   },
   '/products/arcraider-hacks/hwid-spoofer/': {
     title: 'Arc Raiders HWID Spoofer for Sale | Reset After EAC Ban',

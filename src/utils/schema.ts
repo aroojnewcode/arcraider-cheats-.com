@@ -104,6 +104,50 @@ export function faqPageSchema(items: FaqItem[]) {
   };
 }
 
+export interface ReviewListItem {
+  name: string;
+  title: string;
+  body: string;
+  date: string;
+  rating: number;
+}
+
+export function reviewsListSchema(input: {
+  pageUrl: string;
+  pageName: string;
+  description: string;
+  reviews: ReviewListItem[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: input.pageName,
+    description: input.description,
+    url: canonicalUrl(input.pageUrl),
+    inLanguage: 'en-US',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: input.reviews.map((r, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Review',
+          author: { '@type': 'Person', name: r.name },
+          datePublished: new Date(r.date).toISOString().slice(0, 10),
+          reviewBody: r.body,
+          name: r.title,
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: String(r.rating),
+            bestRating: '5',
+            worstRating: '1',
+          },
+        },
+      })),
+    },
+  };
+}
+
 export function itemListSchema(items: { name: string; url: string }[]) {
   return {
     '@context': 'https://schema.org',

@@ -6,20 +6,18 @@ import WhySetupSection from '../components/WhySetupSection.astro';
 import ProductsSection from '../components/ProductsSection.astro';
 import ContentSections from '../components/ContentSections.astro';
 import { resolvePageSeo } from '../config/seo';
-import { faqPageSchema, organizationSchema, websiteSchema } from '../utils/schema';
-import { getLandingFaqs } from '../data/faq';
+import { organizationSchema, websiteSchema } from '../utils/schema';
 import { PRIMARY_HERO_IMAGE } from '../config/media';
 import { webpSrc } from '../utils/responsiveImage';
 
 const seo = resolvePageSeo('/');
-const homeFaqs = getLandingFaqs();
 const heroLcpImage = webpSrc(PRIMARY_HERO_IMAGE, 512);
 ---
 
 <BaseLayout
   title={seo.title}
   description={seo.description}
-  jsonLd={[websiteSchema(), organizationSchema(), faqPageSchema(homeFaqs.map((f, i) => ({ num: String(i + 1).padStart(2, '0'), q: f.q, a: f.a.replace(/<[^>]+>/g, '') })))]}
+  jsonLd={[websiteSchema(), organizationSchema()]}
 >
   <link
     slot="head"

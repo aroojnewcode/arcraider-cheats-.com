@@ -17,6 +17,12 @@ export default {
     const url = new URL(request.url);
     const pathname = url.pathname;
 
+    if (url.hostname.toLowerCase() === 'www.arcraiderhacks.com') {
+      url.hostname = 'arcraiderhacks.com';
+      url.protocol = 'https:';
+      return redirectResponse(url.href, 301);
+    }
+
     const checkoutRedirect = resolveCheckoutPathRedirect(pathname);
     if (checkoutRedirect) {
       return redirectResponse(new URL(checkoutRedirect, url).href, 302);

@@ -255,7 +255,7 @@ export const blogPosts: BlogPostFull[] = [
     date: "Aug 16, 2026",
     readTime: "5 min read",
     body: [
-      { type: 'p', text: "[Lite](/products/arcraider-hacks/) and [Pro](/products/arcraider-hacks/) are the two most popular tiers at arcraiderhacks.com. Lite is awareness—ESP, radar and FOV. Pro adds aim assist. Pick wrong and you either overpay or underpower your sessions; this page helps you buy once." },
+      { type: 'p', text: "[Lite](/products/arcraider-hacks/lite/) and [Pro](/products/arcraider-hacks/pro/) are the two most popular tiers at arcraiderhacks.com. Lite is awareness—ESP, radar and FOV. Pro adds aim assist. Pick wrong and you either overpay or underpower your sessions; this page helps you buy once." },
       { type: 'h2', text: "Buy Lite if" },
       { type: 'p', text: "You have solid mechanics but lose fights you never see coming. You want the simplest, lowest-footprint way into undetected Arc Raiders hacks, or you stream occasionally. Lite offers player ESP, loot and resource ESP, radar, FOV hack and a stream-proof overlay." },
       { type: 'h2', text: "Buy Pro if" },
@@ -349,7 +349,7 @@ export const blogPosts: BlogPostFull[] = [
     date: "Aug 15, 2026",
     readTime: "6 min read",
     body: [
-      { type: 'p', text: "If you want to win more gunfights, [Pro tier](/products/arcraider-hacks/) is the purchase. It bundles Aimbot, Soft Aim, Bone Select, Trigger Bot and No Recoil on top of every Lite module. This page explains what you get and how buyers configure it so it looks human." },
+      { type: 'p', text: "If you want to win more gunfights, [Pro tier](/products/arcraider-hacks/pro/) is the purchase. It bundles Aimbot, Soft Aim, Bone Select, Trigger Bot and No Recoil on top of every Lite module. This page explains what you get and how buyers configure it so it looks human." },
       { type: 'h2', text: "What Pro combat tools do" },
       {
         type: 'table',
@@ -390,7 +390,7 @@ export const blogPosts: BlogPostFull[] = [
     date: "Aug 15, 2026",
     readTime: "5 min read",
     body: [
-      { type: 'p', text: "ESP and radar are the most popular reason to buy Arc Raiders hacks. They turn guesses into information. [Lite](/products/arcraider-hacks/) is the entry tier that delivers both, and this page shows what the setup looks like after purchase so you know what you are buying." },
+      { type: 'p', text: "ESP and radar are the most popular reason to buy Arc Raiders hacks. They turn guesses into information. [Lite](/products/arcraider-hacks/lite/) is the entry tier that delivers both, and this page shows what the setup looks like after purchase so you know what you are buying." },
       { type: 'h2', text: "What Lite gives you" },
       { type: 'table', headers: ["Feature","Included in Lite","Notes"], rows: [
         ["Player ESP","Yes","Boxes, names, health, distance, optional skeletons"],
@@ -431,7 +431,7 @@ export const blogPosts: BlogPostFull[] = [
     date: "Aug 14, 2026",
     readTime: "5 min read",
     body: [
-      { type: 'p', text: "FOV hack extends your field of view beyond the in-game slider so you see more of a base fight or POI corridor. It is included from [Lite](/products/arcraider-hacks/) up, so you do not buy it separately—you buy a tier and get it alongside ESP and radar." },
+      { type: 'p', text: "FOV hack extends your field of view beyond the in-game slider so you see more of a base fight or POI corridor. It is included from [Lite](/products/arcraider-hacks/lite/) up, so you do not buy it separately—you buy a tier and get it alongside ESP and radar." },
       { type: 'h2', text: "What you get" },
       { type: 'ul', items: [
         "A wider field of view than the default slider allows.",
@@ -622,7 +622,7 @@ export const blogPosts: BlogPostFull[] = [
     date: "Aug 12, 2026",
     readTime: "6 min read",
     body: [
-      { type: 'p', text: "Weapon-specific settings are one of the best reasons to buy [Pro tier](/products/arcraider-hacks/). You save a profile per weapon, each with its own bone, smoothing and recoil values. Here are example profiles so you know what you will configure after checkout." },
+      { type: 'p', text: "Weapon-specific settings are one of the best reasons to buy [Pro tier](/products/arcraider-hacks/pro/). You save a profile per weapon, each with its own bone, smoothing and recoil values. Here are example profiles so you know what you will configure after checkout." },
       { type: 'h2', text: "Example profiles" },
       {
         type: 'table',
@@ -650,7 +650,7 @@ export const blogPosts: BlogPostFull[] = [
         text: "Aimbot, Bone Select and No Recoil profiles—secure checkout at arcraiderhacks.com.",
         href: "/go/arc-raiders/",
       },
-      { type: 'p', text: "[Open the Pro product page](/products/arcraider-hacks/) → [pay for weapon profiles](/go/arc-raiders/). Treat every value as a starting point; aim assist carries ban risk." },
+      { type: 'p', text: "[Open the Pro product page](/products/arcraider-hacks/pro/) → [pay for weapon profiles](/go/arc-raiders/). Treat every value as a starting point; aim assist carries ban risk." },
     ],
   },
   {
@@ -719,7 +719,7 @@ export const blogPosts: BlogPostFull[] = [
         "Easier removal than modifications that touch game files.",
       ] },
       { type: 'h2', text: "Tier choice" },
-      { type: 'p', text: "All tiers share the loader. [Lite](/products/arcraider-hacks/) is ESP and radar, Pro adds aim assist, and [Elite](/products/arcraider-hacks/elite/) adds loot assist tools and Skin Changer. Read [Lite vs Pro](/blog/lite-vs-pro/)." },
+      { type: 'p', text: "All tiers share the loader. [Lite](/products/arcraider-hacks/lite/) is ESP and radar, [Pro](/products/arcraider-hacks/pro/) adds aim assist, and [Elite](/products/arcraider-hacks/elite/) adds loot assist tools and Skin Changer. Read [Lite vs Pro](/blog/lite-vs-pro/)." },
       { type: 'h2', text: "Launch order and safety" },
       { type: 'p', text: "Follow the portal guide, check the status banner and test on a quiet test session. After updates run the [EAC patch day checklist](/blog/eac-patch/). For startup errors use the [EAC errors guide](/blog/eac-error/)." },
       {
