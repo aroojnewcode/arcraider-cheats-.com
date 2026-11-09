@@ -1,0 +1,33 @@
+name: Deploy Worker
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Install dependencies
+        run: npm ci
+        working-directory: .
+      - name: Build static assets
+        run: node scripts/cf-build.mjs
+        env:
+          SITE_ORIGIN: https://arcraiderhacks.com
+          SITEMAP_ORIGIN: https://arcraiderhacks.com
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.PUBLIC_GA_MEASUREMENT_ID }}
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

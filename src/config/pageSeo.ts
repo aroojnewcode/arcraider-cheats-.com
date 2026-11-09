@@ -44,21 +44,25 @@ const CORE_PAGE_SEO: Record<string, PageSeoEntry> = {
     title: 'Arc Raiders HWID Spoofer for Sale | Reset After EAC Ban',
     description:
       'Buy an Arc Raiders HWID spoofer to rotate disk, MAC and GPU IDs after an Easy Anti-Cheat hardware flag. Portal setup guide and Discord support included.',
+    h1: 'Arc Raiders HWID Spoofer — reset hardware after EAC ban',
   },
   '/products/arcraider-hacks/ugc/': {
     title: 'Arc Raiders UGC Recovery Tool | Steam & Ban Appeals',
     description:
       'UGC appeal workspace for platform holds, EAC bans and server restrictions—document cases, track status and rebuild account access with structured workflows.',
+    h1: 'UGC recovery & ban appeal workspace for Arc Raiders',
   },
   '/products/arcraider-hacks/unlock-all/': {
     title: 'Unlock All & Skin Changer | Local Cosmetics',
     description:
       'Unlock All and Skin Changer for local weapon and clothing previews on PC—client-side cosmetics without market purchases; standalone or with Elite tier.',
+    h1: 'Unlock All & Skin Changer — local cosmetics preview',
   },
   '/products/arcraider-hacks/utilities/': {
     title: 'Compare Hack Utilities | HWID Spoofer & UGC',
     description:
       'Utility comparison for PC—HWID Spoofer vs UGC recovery use cases, feature lists and product pages. Skin Changer details live on Unlock All.',
+    h1: 'Compare hack utilities — HWID spoofer & UGC',
   },
   '/blog/': {
     title: 'Arc Raiders Hack Buy Guides | Lite, Pro & Elite',
@@ -94,6 +98,7 @@ const CORE_PAGE_SEO: Record<string, PageSeoEntry> = {
     title: 'Arc Raiders Hacks Terms of Sale | License & Refunds',
     description:
       'Legal terms for purchasing Arc Raiders hack licenses on arcraiderhacks.com—delivery, personal-use limits, refunds, EAC risk and acceptable product use.',
+    h1: 'Terms of sale — Arc Raiders hack licenses',
   },
   '/about/': {
     title: 'About Arc Raiders Hacks Store | Loader Updates & Help',
@@ -105,11 +110,13 @@ const CORE_PAGE_SEO: Record<string, PageSeoEntry> = {
     title: 'Arc Raiders Hacks Discord Support | Loader Help Tickets',
     description:
       'Discord support for loader errors, HWID Spoofer setup and checkout—open a ticket with your order ID, issue type and screenshots for fast help.',
+    h1: 'Discord support — loader help & checkout tickets',
   },
   '/privacy/': {
     title: 'Privacy Policy | Data, Cookies & Your Rights',
     description:
       'Privacy policy for arcraiderhacks.com—cookies, analytics, Discord ticket data, checkout partners, retention and your rights when browsing or purchasing.',
+    h1: 'Privacy policy — data, cookies & your rights',
   },
 };
 

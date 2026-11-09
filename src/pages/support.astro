@@ -4,12 +4,15 @@ import { t } from '../i18n';
 import { resolvePageSeo } from '../config/seo';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ContactSupportSection from '../components/ContactSupportSection.astro';
-import { breadcrumbSchema, faqPageSchema, organizationSchema, webPageSchema } from '../utils/schema';
+import { breadcrumbSchema, faqPageSchema, webPageSchema } from '../utils/schema';
+import { getPageSeoEntry } from '../config/pageSeo';
 import { Prose } from '@/components/starwind/prose';
 import SeoRelatedLinks from '../components/SeoRelatedLinks.astro';
 
 const seo = resolvePageSeo('/support/');
+const seoEntry = getPageSeoEntry('/support/');
 const supportCopy = t.legalPages.support;
+const supportH1 = seoEntry?.h1 ?? t.support.title;
 
 const supportFaqs = [
   {
@@ -31,9 +34,8 @@ const supportFaqs = [
   title={seo.title}
   description={seo.description}
   jsonLd={[
-    organizationSchema(),
     webPageSchema({
-      name: t.support.title,
+      name: supportH1,
       description: t.support.subtitle,
       url: '/support/',
     }),
@@ -58,7 +60,7 @@ const supportFaqs = [
       ]}
     />
   </div>
-  <ContactSupportSection titleId="support-page-title" showTicketTips />
+  <ContactSupportSection titleId="support-page-title" title={supportH1} showTicketTips />
   <div class="mx-auto max-w-3xl px-5 pb-16">
     <Prose class="max-w-none">
       {supportCopy.sections.map((section) => (

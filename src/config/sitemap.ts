@@ -3,8 +3,6 @@ import { blogPosts } from '../data/blog';
 import { forumPosts } from '../data/forum';
 import { parseBlogDate } from '../utils/schema';
 
-const buildDate = new Date().toISOString().slice(0, 10);
-
 const blogLastmod = new Map(
   blogPosts.map((post) => [`/blog/${post.slug}/`, parseBlogDate(post.date)] as const),
 );
@@ -13,14 +11,25 @@ const forumLastmod = new Map(
   forumPosts.map((post) => {
     const sourceSlug = post.sourcePath?.split('/').filter(Boolean).at(-1);
     const sourceArticle = sourceSlug ? blogPosts.find((item) => item.slug === sourceSlug) : undefined;
-    const lastmod = sourceArticle ? parseBlogDate(sourceArticle.date) : buildDate;
+    const lastmod = sourceArticle ? parseBlogDate(sourceArticle.date) : undefined;
     return [`/forum/${post.slug}/`, lastmod] as const;
   }),
 );
 
+function latestBlogDate(): string | undefined {
+  const dates = [...blogLastmod.values()].filter(Boolean).sort();
+  return dates.at(-1);
+}
+
 function pathnameFromUrl(url: string): string {
   const path = new URL(url).pathname;
   return path.endsWith('/') ? path : `${path}/`;
+}
+
+/** Omit lastmod on static/product URLs so we do not emit misleading build-time dates. */
+function omitLastmod(item: SitemapItem): SitemapItem {
+  delete item.lastmod;
+  return item;
 }
 
 export function sitemapSerialize(item: SitemapItem): SitemapItem | undefined {
@@ -36,17 +45,21 @@ export function sitemapSerialize(item: SitemapItem): SitemapItem | undefined {
   }
   item.url = canonical.href;
 
-  item.lastmod = buildDate;
+  delete item.lastmod;
 
   if (path === '/') {
     item.priority = 1;
     item.changefreq = 'weekly';
+    const latest = latestBlogDate();
+    if (latest) item.lastmod = latest;
     return item;
   }
 
   if (path === '/blog/') {
     item.priority = 0.9;
     item.changefreq = 'weekly';
+    const latest = latestBlogDate();
+    if (latest) item.lastmod = latest;
     return item;
   }
 
@@ -54,30 +67,30 @@ export function sitemapSerialize(item: SitemapItem): SitemapItem | undefined {
     item.priority = 0.8;
     item.changefreq = 'weekly';
     const forumDates = [...forumLastmod.values()].filter(Boolean).sort();
-    if (forumDates.length > 0) {
-      item.lastmod = forumDates.at(-1) ?? buildDate;
-    }
+    if (forumDates.length > 0) item.lastmod = forumDates.at(-1);
     return item;
   }
 
   if (path.startsWith('/forum/')) {
     item.priority = 0.6;
     item.changefreq = 'monthly';
-    item.lastmod = forumLastmod.get(path) ?? buildDate;
+    const mod = forumLastmod.get(path);
+    if (mod) item.lastmod = mod;
     return item;
   }
 
   if (path.startsWith('/blog/')) {
     item.priority = 0.7;
     item.changefreq = 'monthly';
-    item.lastmod = blogLastmod.get(path) ?? buildDate;
+    const mod = blogLastmod.get(path);
+    if (mod) item.lastmod = mod;
     return item;
   }
 
   if (path.startsWith('/products/')) {
     item.priority = 0.8;
     item.changefreq = 'weekly';
-    return item;
+    return omitLastmod(item);
   }
 
   if (
@@ -89,10 +102,10 @@ export function sitemapSerialize(item: SitemapItem): SitemapItem | undefined {
   ) {
     item.priority = 0.5;
     item.changefreq = 'yearly';
-    return item;
+    return omitLastmod(item);
   }
 
   item.priority = 0.6;
   item.changefreq = 'monthly';
-  return item;
+  return omitLastmod(item);
 }

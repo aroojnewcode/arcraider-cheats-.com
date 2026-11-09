@@ -98,10 +98,9 @@ export const PATH_REDIRECTS = new Map([
   ['/forum/how-to-learn-spray-control-on-a-private-server/', '/forum/spray-server/'],
   ['/products/arcraider-hacks/utilities', '/products/arcraider-hacks/utilities/'],
   ['/products/arcraider-hacks', '/products/arcraider-hacks/'],
+  ['/products/arcraider-hacks/', '/products/arcraider-hacks/'],
   ['/products/arcraider-hacks/account-recovery', '/products/arcraider-hacks/ugc/'],
   ['/products/arcraider-hacks/account-recovery/', '/products/arcraider-hacks/ugc/'],
-  ['/products/arcraider-hacks', '/products/arcraider-hacks/'],
-  ['/products/arcraider-hacks/', '/products/arcraider-hacks/'],
   ['/products/arcraider-hacks/elite', '/products/arcraider-hacks/elite/'],
   ['/products/arcraider-hacks/elite/', '/products/arcraider-hacks/elite/'],
   ['/products/arcraider-hacks/utilities', '/products/arcraider-hacks/utilities/'],
@@ -131,7 +130,10 @@ export function resolvePathRedirect(pathname) {
   if (direct) return direct;
 
   if (pathname !== '/' && !pathname.endsWith('/') && !TRAILING_SLASH_SKIP.test(pathname)) {
-    return `${pathname}/`;
+    const withSlash = `${pathname}/`;
+    const slashTarget = PATH_REDIRECTS.get(withSlash);
+    if (slashTarget) return slashTarget;
+    return withSlash;
   }
 
   return null;

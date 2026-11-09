@@ -57,7 +57,12 @@ export function organizationSchema() {
   };
 }
 
-export function collectionPageSchema(input: { name: string; description: string; url: string }) {
+export function collectionPageSchema(input: {
+  name: string;
+  description: string;
+  url: string;
+  aggregateRating?: { ratingValue: number; reviewCount: number };
+}) {
   return {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -70,6 +75,17 @@ export function collectionPageSchema(input: { name: string; description: string;
       name: 'Arc Raiders Hacks',
       url: `${SITE_ORIGIN}/`,
     },
+    ...(input.aggregateRating
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: String(input.aggregateRating.ratingValue),
+            reviewCount: String(input.aggregateRating.reviewCount),
+            bestRating: '5',
+            worstRating: '1',
+          },
+        }
+      : {}),
   };
 }
 

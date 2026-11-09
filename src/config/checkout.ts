@@ -17,6 +17,14 @@ export const CHECKOUT_SLUG_TO_PRODUCT = Object.fromEntries(
   Object.entries(CHECKOUT_SLUGS).map(([product, slug]) => [slug, product as CheckoutProduct]),
 ) as Record<string, CheckoutProduct>;
 
+/** On-site canonical targets for /go/* fallback HTML (Worker serves 302 first). */
+export const CHECKOUT_SLUG_TO_PRODUCT_PAGE: Record<string, string> = {
+  'arc-raiders': '/products/arcraider-hacks/',
+  'skin-changer': '/products/arcraider-hacks/unlock-all/',
+  'hwid-spoofer': '/products/arcraider-hacks/hwid-spoofer/',
+  ugc: '/products/arcraider-hacks/ugc/',
+};
+
 /** Zadeyo affiliate URL for visible “Get access” / buy CTAs (same tab — no target=_blank). */
 export function checkoutPath(product: CheckoutProduct = 'arcRaider'): string {
   return CHECKOUT[product];

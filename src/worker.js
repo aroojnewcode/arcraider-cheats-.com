@@ -36,6 +36,10 @@ export default {
 
     const path = pathname.replace(/\/$/, '') || '/';
 
+    if (path === '/sitemap-0.xml') {
+      return redirectResponse(`${CANONICAL_ORIGIN}/sitemap-index.xml`, 301);
+    }
+
     if (path === '/robots.txt') {
       const body = `User-agent: *
 Allow: /
@@ -56,7 +60,6 @@ Sitemap: ${CANONICAL_ORIGIN}/sitemap-index.xml
       path === '/sitemap-pages.xml' ||
       path === '/sitemap-blog.xml' ||
       path === '/sitemap-forum.xml' ||
-      path === '/sitemap-0.xml';
 
     if (isSitemap) {
       const assetUrl = new URL(request.url);

@@ -1,5 +1,11 @@
 ---
-import { CHECKOUT_SLUGS, CHECKOUT_SLUG_TO_PRODUCT, checkoutExternalUrl } from '../../config/checkout';
+import {
+  CHECKOUT_SLUGS,
+  CHECKOUT_SLUG_TO_PRODUCT,
+  CHECKOUT_SLUG_TO_PRODUCT_PAGE,
+  checkoutExternalUrl,
+} from '../../config/checkout';
+import { canonicalUrl } from '../../config/seo';
 
 export function getStaticPaths() {
   return Object.values(CHECKOUT_SLUGS).map((slug) => ({ params: { slug } }));
@@ -13,6 +19,8 @@ if (!product) {
 }
 
 const destination = checkoutExternalUrl(product);
+const productPage = CHECKOUT_SLUG_TO_PRODUCT_PAGE[slug] ?? '/products/arcraider-hacks/';
+const onSiteCanonical = canonicalUrl(productPage);
 ---
 
 <!doctype html>
@@ -22,7 +30,7 @@ const destination = checkoutExternalUrl(product);
     <meta http-equiv="refresh" content={`0;url=${destination}`} />
     <meta name="robots" content="noindex, nofollow" />
     <title>Redirecting to secure checkout…</title>
-    <link rel="canonical" href={destination} />
+    <link rel="canonical" href={onSiteCanonical} />
   </head>
   <body>
     <p>Redirecting to secure checkout… <a href={destination}>Continue</a></p>

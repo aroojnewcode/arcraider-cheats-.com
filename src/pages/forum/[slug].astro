@@ -6,7 +6,8 @@ import Icon from '../../components/icons/Icon.astro';
 import { forumPosts, getForumPost } from '../../data/forum';
 import { normalizeDocumentTitle, pageTitle } from '../../config/seo';
 import { getPageSeoEntry } from '../../config/pageSeo';
-import { breadcrumbSchema, discussionForumPostingSchema } from '../../utils/schema';
+import { breadcrumbSchema, webPageSchema } from '../../utils/schema';
+import { productLinkForForumSource } from '../../utils/forumProductLink';
 
 export function getStaticPaths() {
   return forumPosts.map((post) => ({ params: { slug: post.slug } }));
@@ -24,10 +25,11 @@ const relatedPosts = [
   ...forumPosts.filter((item) => item.slug !== post.slug && item.category === post.category),
   ...forumPosts.filter((item) => item.slug !== post.slug && item.category !== post.category),
 ].slice(0, 3);
+const productCta = productLinkForForumSource(post.sourcePath);
 ---
 
 <BaseLayout title={layoutTitle} description={layoutDescription} jsonLd={[
-  discussionForumPostingSchema({ name: post.title, text: post.body.join('\n\n'), url: path, author: post.author, comments: post.commentsCount }),
+  webPageSchema({ name: layoutTitle, description: layoutDescription, url: path }),
   breadcrumbSchema(breadcrumbs),
 ]}>
   <section class="forum-page py-8 md:py-12">
@@ -45,7 +47,7 @@ const relatedPosts = [
               {post.flair && <span class={`forum-flair tone-${post.categoryTone}`}>{post.flair}</span>}
               <div class="forum-detail-copy">{post.body.map((paragraph) => <p>{paragraph}</p>)}</div>
               {post.sourceTitle && <p class="forum-source forum-source--detail">Based on: <a href={post.sourcePath}>{post.sourceTitle}</a></p>}
-              <div class="forum-post-actions forum-post-actions--detail"><a href="#comments"><Icon name="messageCircle" size={16} /> {post.commentsCount} guide replies</a><a href={post.sourcePath}><Icon name="navBlog" size={15} /> Read source guide</a></div>
+              <div class="forum-post-actions forum-post-actions--detail"><a href="#comments"><Icon name="messageCircle" size={16} /> {post.commentsCount} guide replies</a><a href={post.sourcePath}><Icon name="navBlog" size={15} /> Read source guide</a><a href={productCta.href}><Icon name="package" size={15} /> {productCta.label}</a></div>
               <div class="forum-login-prompt"><span class="forum-user-dot">i</span><span>Preview discussion</span><span>Posting and voting are unavailable here</span></div>
               <section class="forum-comments" id="comments" aria-labelledby="comments-title">
                 <div class="forum-comments__heading"><h2 id="comments-title">Guide replies <span>{post.commentsCount}</span></h2><span>From the source article</span></div>

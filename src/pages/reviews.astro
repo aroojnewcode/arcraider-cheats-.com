@@ -39,6 +39,7 @@ const initials = (name: string) =>
       name: 'Arc Raiders Hacks Customer Reviews',
       description: seo.description,
       url: '/reviews/',
+      aggregateRating: { ratingValue: stats.average, reviewCount: stats.count },
     }),
     breadcrumbSchema(breadcrumbs),
     reviewsListSchema({

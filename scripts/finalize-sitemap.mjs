@@ -152,15 +152,20 @@ fs.writeFileSync(path.join(dist, 'sitemap.xml'), indexXml, 'utf8');
 writeUrlset(path.join(dist, 'sitemap-0.xml'), entries);
 
 const publicDir = path.join(root, 'public');
+/** Do not publish sitemap-0.xml (monolithic duplicate); crawlers use sitemap-index.xml. */
 for (const name of [
   'sitemap-index.xml',
   'sitemap.xml',
   'sitemap-pages.xml',
   'sitemap-blog.xml',
   'sitemap-forum.xml',
-  'sitemap-0.xml',
 ]) {
   fs.copyFileSync(path.join(dist, name), path.join(publicDir, name));
+}
+
+const legacyMonolith = path.join(publicDir, 'sitemap-0.xml');
+if (fs.existsSync(legacyMonolith)) {
+  fs.unlinkSync(legacyMonolith);
 }
 
 console.log(
