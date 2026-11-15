@@ -57,7 +57,7 @@ Sitemap: ${CANONICAL_ORIGIN}/sitemap-index.xml
       path === '/sitemap-index.xml' ||
       path === '/sitemap-pages.xml' ||
       path === '/sitemap-blog.xml' ||
-      path === '/sitemap-forum.xml' ||
+      path === '/sitemap-forum.xml';
 
     if (isSitemap) {
       const assetUrl = new URL(request.url);
