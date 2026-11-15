@@ -40,7 +40,13 @@ Repository secrets:
 - `INDEXNOW_KEY` (optional)
 - `PUBLIC_GA_MEASUREMENT_ID` (optional)
 
-Manual deploy: `node scripts/cf-build.mjs` then `npx wrangler deploy`.
+Manual deploy: `node scripts/cf-build.mjs` then `npx wrangler deploy` (no `[build]` in `wrangler.toml` — build once only).
+
+### Cloudflare Builds (common failures)
+
+1. **Worker parse error** — fix `src/worker.js` syntax; deploy stops before upload.
+2. **Double build** — dashboard `npm run build` + `wrangler.toml [build]` runs the site build twice; remove `[build]` from `wrangler.toml` (this repo does).
+3. **Custom domain routes** — `[[routes]]` in `wrangler.toml` require `arcraiderhacks.com` on the same account; comment routes out to deploy to `*.workers.dev` only, then attach the custom domain in the dashboard.
 
 Post-deploy: `npm run seo:smoke` (same checks run in CI after deploy).
 

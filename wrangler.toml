@@ -5,7 +5,8 @@ main = "src/worker.js"
 compatibility_date = "2026-10-26"
 workers_dev = true
 
-# Requires arcraiderhacks.com zone on this Cloudflare account (apex + www).
+# Custom domain routes — deploy fails if this zone is not on the same Cloudflare account.
+# Comment out both [[routes]] blocks until arcraiderhacks.com is on the account, then redeploy.
 [[routes]]
 pattern = "arcraiderhacks.com/*"
 zone_name = "arcraiderhacks.com"
@@ -13,8 +14,8 @@ zone_name = "arcraiderhacks.com"
 pattern = "www.arcraiderhacks.com/*"
 zone_name = "arcraiderhacks.com"
 
-[build]
-command = "node scripts/cf-build.mjs"
+# Do not set [build] here. Cloudflare Builds / CI already run `node scripts/cf-build.mjs` or
+# `npm run build` first; a second build during `wrangler deploy` duplicates work and can fail.
 
 [assets]
 directory = "./dist"
