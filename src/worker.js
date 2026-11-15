@@ -1,8 +1,6 @@
 import { resolvePathRedirect } from '../scripts/redirects.mjs';
 import { resolveCheckoutPathRedirect } from './config/checkout-redirects.mjs';
-
-/** Must match SITE_ORIGIN / sitemap finalize host (docs/SEO-DEPLOY.md). */
-const CANONICAL_ORIGIN = 'https://arcraiderhacks.com';
+import { CANONICAL_ORIGIN, isCanonicalHostname } from '../scripts/canonical-host.mjs';
 
 function redirectResponse(target, status = 301) {
   return new Response(null, {
@@ -76,6 +74,15 @@ Sitemap: ${CANONICAL_ORIGIN}/sitemap-index.xml
       }
     }
 
-    return env.ASSETS.fetch(request);
+    const assetResponse = await env.ASSETS.fetch(request);
+    if (!isCanonicalHostname(url.hostname)) {
+      const headers = new Headers(assetResponse.headers);
+      headers.set('X-Robots-Tag', 'noindex, nofollow');
+      return new Response(assetResponse.body, {
+        status: assetResponse.status,
+        headers,
+      });
+    }
+    return assetResponse;
   },
 };

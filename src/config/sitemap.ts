@@ -35,8 +35,16 @@ function omitLastmod(item: SitemapItem): SitemapItem {
 export function sitemapSerialize(item: SitemapItem): SitemapItem | undefined {
   const path = pathnameFromUrl(item.url);
 
-  if (path.includes('/404') || path.startsWith('/go/') || path.includes('/rss.xml')) {
+  if (path.includes('/404') || path.startsWith('/go/')) {
     return undefined;
+  }
+
+  if (path === '/rss.xml' || path === '/rss.xml/') {
+    item.priority = 0.3;
+    item.changefreq = 'daily';
+    const latest = latestBlogDate();
+    if (latest) item.lastmod = latest;
+    return item;
   }
 
   const canonical = new URL(item.url);

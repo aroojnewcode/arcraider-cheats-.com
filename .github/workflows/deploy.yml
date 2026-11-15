@@ -19,6 +19,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
         working-directory: .
+      - name: Verify IndexNow & GA secrets
+        run: |
+          if [ -z "${INDEXNOW_KEY}" ]; then
+            echo "::warning::INDEXNOW_KEY is not set — IndexNow pings are skipped at build."
+          fi
+          if [ -z "${PUBLIC_GA_MEASUREMENT_ID}" ]; then
+            echo "::warning::PUBLIC_GA_MEASUREMENT_ID is not set — GA4 will not load on the live site."
+          fi
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.PUBLIC_GA_MEASUREMENT_ID }}
       - name: Build static assets
         run: node scripts/cf-build.mjs
         env:
@@ -31,3 +42,8 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: SEO redirect & HTTPS smoke tests
+        continue-on-error: true
+        run: node scripts/seo-smoke.mjs
+        env:
+          SMOKE_ORIGIN: https://arcraiderhacks.com

@@ -2,6 +2,7 @@ export declare const CHECKOUT_URLS: {
   readonly arcRaider: string;
   readonly skinChanger: string;
   readonly hwidSpoofer: string;
+  readonly cloudDma: string;
   readonly ugc: string;
 };
 

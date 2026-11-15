@@ -10,6 +10,7 @@ export const CHECKOUT_SLUGS: Record<CheckoutProduct, string> = {
   arcRaider: 'arc-raiders',
   skinChanger: 'skin-changer',
   hwidSpoofer: 'hwid-spoofer',
+  cloudDma: 'cloud-dma',
   ugc: 'ugc',
 };
 
@@ -22,6 +23,7 @@ export const CHECKOUT_SLUG_TO_PRODUCT_PAGE: Record<string, string> = {
   'arc-raiders': '/products/arcraider-hacks/',
   'skin-changer': '/products/arcraider-hacks/unlock-all/',
   'hwid-spoofer': '/products/arcraider-hacks/hwid-spoofer/',
+  'cloud-dma': '/products/arcraider-hacks/',
   ugc: '/products/arcraider-hacks/ugc/',
 };
 
@@ -53,9 +55,11 @@ export function checkoutForSlug(slug: string): string {
     case 'ugc':
     case 'account-recovery':
       return checkoutPath('ugc');
+    case 'cloud-dma':
     case 'lite':
     case 'pro':
     case 'elite':
+      return checkoutPath('cloudDma');
     default:
       return checkoutPath('arcRaider');
   }
@@ -91,7 +95,7 @@ export function resolveCheckoutHref(href: string): string {
     return checkoutPath('ugc');
   }
   if (href.includes('%2Fproducts%2Fcloud-dma') || href.includes('/products/cloud-dma')) {
-    return checkoutPath('arcRaider');
+    return checkoutPath('cloudDma');
   }
   if (href.includes('%2Fproducts%2Farc-raiders') || href.includes('/products/arc-raiders')) {
     return checkoutPath('arcRaider');

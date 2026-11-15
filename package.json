@@ -14,7 +14,8 @@
     "optimize:images": "node scripts/optimize-images.mjs",
     "media:arc-raiders": "node scripts/fetch-arc-raiders-media.mjs && node scripts/optimize-images.mjs",
     "brand:icons": "node scripts/make-favicon.mjs",
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy",
+    "seo:smoke": "node scripts/seo-smoke.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

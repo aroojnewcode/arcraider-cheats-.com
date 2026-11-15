@@ -56,6 +56,9 @@ function canonicalLoc(loc) {
   url.search = '';
   url.hash = '';
   let pathname = url.pathname;
+  if (pathname.endsWith('.xml') && pathname !== '/sitemap.xml') {
+    return `${url.origin}${pathname}`;
+  }
   if (pathname !== '/' && !pathname.endsWith('/')) pathname = `${pathname}/`;
   return `${url.origin}${pathname}`;
 }
@@ -111,6 +114,24 @@ function dedupeEntries(rawEntries) {
 
 const parsed = urlBlocks.map(parseUrlBlock).filter(Boolean);
 const entries = dedupeEntries(parsed);
+
+const rssPath = '/rss.xml';
+const rssLoc = `${siteOrigin}${rssPath}`;
+if (!entries.some((e) => pathnameFromLoc(e.loc) === rssPath)) {
+  const latestBlogLastmod = entries
+    .filter((e) => matchesSection(pathnameFromLoc(e.loc), 'blog'))
+    .map((e) => e.lastmod)
+    .filter(Boolean)
+    .sort()
+    .at(-1);
+  entries.push({
+    loc: rssLoc,
+    lastmod: latestBlogLastmod,
+    changefreq: 'daily',
+    priority: '0.3',
+  });
+  entries.sort((a, b) => a.loc.localeCompare(b.loc));
+}
 
 const blogEntries = entries.filter((e) => matchesSection(pathnameFromLoc(e.loc), 'blog'));
 const forumEntries = entries.filter((e) => matchesSection(pathnameFromLoc(e.loc), 'forum'));

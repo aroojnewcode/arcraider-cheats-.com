@@ -6,7 +6,7 @@ import Icon from '../../components/icons/Icon.astro';
 import { forumPosts, getForumPost } from '../../data/forum';
 import { normalizeDocumentTitle, pageTitle } from '../../config/seo';
 import { getPageSeoEntry } from '../../config/pageSeo';
-import { breadcrumbSchema, webPageSchema } from '../../utils/schema';
+import { breadcrumbSchema, discussionForumPostingSchema } from '../../utils/schema';
 import { productLinkForForumSource } from '../../utils/forumProductLink';
 
 export function getStaticPaths() {
@@ -29,7 +29,13 @@ const productCta = productLinkForForumSource(post.sourcePath);
 ---
 
 <BaseLayout title={layoutTitle} description={layoutDescription} jsonLd={[
-  webPageSchema({ name: layoutTitle, description: layoutDescription, url: path }),
+  discussionForumPostingSchema({
+    name: post.title,
+    text: post.body.join('\n\n'),
+    url: path,
+    author: 'Arc Raiders Hacks guide team',
+    comments: post.commentsCount,
+  }),
   breadcrumbSchema(breadcrumbs),
 ]}>
   <section class="forum-page py-8 md:py-12">

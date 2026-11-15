@@ -2,11 +2,12 @@
 export const ARC_RAIDERS_CHECKOUT_URL =
   'https://zadeyo.com/go/UROOJ?to=%2Fproducts%2Farc-raiders';
 
-/** Checkout destinations keyed by internal product id (same affiliate link for all buy CTAs). */
+/** Checkout destinations keyed by internal product id. */
 export const CHECKOUT_URLS = {
   arcRaider: ARC_RAIDERS_CHECKOUT_URL,
-  skinChanger: ARC_RAIDERS_CHECKOUT_URL,
-  hwidSpoofer: ARC_RAIDERS_CHECKOUT_URL,
+  skinChanger: 'https://zadeyo.com/go/UROOJ?to=%2Fproducts%2Fskin-changer',
+  hwidSpoofer: 'https://zadeyo.com/go/UROOJ?to=%2Fproducts%2Fhwid-spoofer',
+  cloudDma: 'https://zadeyo.com/go/UROOJ?to=%2Fproducts%2Fcloud-dma',
   ugc: ARC_RAIDERS_CHECKOUT_URL,
 };
 
@@ -18,6 +19,8 @@ export const CHECKOUT_PATH_REDIRECTS = new Map([
   ['/go/skin-changer/', CHECKOUT_URLS.skinChanger],
   ['/go/hwid-spoofer', CHECKOUT_URLS.hwidSpoofer],
   ['/go/hwid-spoofer/', CHECKOUT_URLS.hwidSpoofer],
+  ['/go/cloud-dma', CHECKOUT_URLS.cloudDma],
+  ['/go/cloud-dma/', CHECKOUT_URLS.cloudDma],
   ['/go/ugc', CHECKOUT_URLS.ugc],
   ['/go/ugc/', CHECKOUT_URLS.ugc],
 ]);

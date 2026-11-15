@@ -33,7 +33,15 @@ export function getOrganizationSameAs(): string[] {
 
 export const INDEXNOW_KEY = import.meta.env.INDEXNOW_KEY as string | undefined;
 
-export function canonicalUrl(pathname: string, origin: string = SITE_ORIGIN): string {
+/** Production builds always emit arcraiderhacks.com; dev uses the preview origin for accurate local canonicals. */
+export function resolveSiteOriginForBuild(): string {
+  if (import.meta.env.DEV) {
+    return String(import.meta.env.SITE || SITE_ORIGIN).replace(/\/$/, '');
+  }
+  return SITE_ORIGIN;
+}
+
+export function canonicalUrl(pathname: string, origin: string = resolveSiteOriginForBuild()): string {
   let path = pathname || '/';
   if (!path.startsWith('/')) path = `/${path}`;
   if (path !== '/' && !path.endsWith('/')) path = `${path}/`;

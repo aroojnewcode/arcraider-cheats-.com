@@ -67,6 +67,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://arcraiderhacks.com/rss.xml</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://arcraiderhacks.com/support/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>

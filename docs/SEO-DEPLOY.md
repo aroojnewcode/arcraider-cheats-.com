@@ -42,6 +42,8 @@ Repository secrets:
 
 Manual deploy: `node scripts/cf-build.mjs` then `npx wrangler deploy`.
 
+Post-deploy: `npm run seo:smoke` (same checks run in CI after deploy).
+
 ## IndexNow
 
 Set in Cloudflare **Build** environment (see `.env.example`):
@@ -63,7 +65,10 @@ Optional `PUBLIC_ORG_SAME_AS` — comma-separated profile URLs (X, YouTube, etc.
 
 - Per-route titles/descriptions: `src/config/pageSeo.ts`, `pageSeoBlog.ts`, `forumSeo.ts`
 - Home: `WebSite` + `Organization` only (no duplicate `FAQPage`; full FAQ schema lives on `/faq/`)
-- **Forum threads**: `WebPage` + `BreadcrumbList` only (no `DiscussionForumPosting` — reduces duplicate rich-result risk vs blog; pages stay indexed)
+- **Forum threads**: `DiscussionForumPosting` + `BreadcrumbList` (indexed; sitemap-forum.xml)
+- **`/rss.xml`**: in sitemap with `lastmod` from latest blog post
+- **Preview hosts** (`*.workers.dev`): `X-Robots-Tag: noindex` from Worker (HTML still canonicalizes to apex)
+- **Local `npm run dev`**: `noindex` + canonical uses `http://localhost:4321` (not production)
 - Reviews: `CollectionPage` (with `aggregateRating`) + `WebPage` with `ItemList` of `Review` items
 - Product pages: `Product` with `AggregateOffer` from `src/data/productPricing.ts`
 - `/go/*` fallback HTML: `noindex,nofollow`, **canonical = on-site product URL** (Worker returns 302 first)

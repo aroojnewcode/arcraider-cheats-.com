@@ -3,12 +3,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/icons/Icon.astro';
 import { Button } from '@/components/starwind/button';
 import { ROUTES } from '../utils/path';
+import { breadcrumbSchema, webPageSchema } from '../utils/schema';
+
+const description =
+  'This Arc Raiders Hacks page could not be found. Browse undetected Arc Raiders ESP, aimbot products and buy guides on arcraiderhacks.com.';
+const title = 'Arc Raiders Hacks 404 | Page Not Found';
+const breadcrumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Page not found', path: '/404/' },
+];
 ---
 
 <BaseLayout
-  title="Arc Raiders Hacks 404 | Page Not Found"
-  description="This Arc Raiders Hacks page could not be found. Browse undetected Arc Raiders ESP, aimbot products and buy guides on arcraiderhacks.com."
+  title={title}
+  description={description}
   noindex={true}
+  jsonLd={[
+    webPageSchema({ name: title, description, url: '/404/' }),
+    breadcrumbSchema(breadcrumbs),
+  ]}
 >
   <section class="py-16 md:py-24">
     <div class="mx-auto max-w-lg px-5 text-center">
